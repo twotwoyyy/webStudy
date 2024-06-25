@@ -1,0 +1,63 @@
+<!-- 
+	border : 테이블의 테두리
+	rowspan : 세로 묶기
+	colspan : 가로 묶기 
+ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<!-- 한번에 스타일 바꾸기--> 
+<!-- <style>
+	td{
+		text-align: center;
+	}
+</style>
+-->
+</head>
+
+<body>
+	<center>
+		<h1>내용보기</h1>
+		<table border="1" bordercolor="black" cellspacing="0" cellpadding="0" width="600">
+			<tbody>
+				<tr>
+					<th width="20%">번호</th>
+					<td width="30%" align="center">1</td>
+					<th width="20%">작성일</th>
+					<td width="30%" align="center">2024-06-25</td>
+				</tr>
+				<tr>
+					<th width="20%">이름</th>
+					<td width="30%" align="center">정지나</td>
+					<th width="20%">조회수</th> <!-- th : 가운데 정렬,bold -->
+					<td width="30%" align="center">10</td>   <!-- td : 왼쪽 정렬 -->
+				</tr>
+				<tr>
+					<th width="20%">제목</th>
+					<td colspan="3" align="center">HTML을 이용한 게시판 내용 보기 화면 제작</td>
+				</tr>
+				<tr>
+					<!-- align  :left|center|right  =>가로 정렬
+					     valign : top|middle|bottom =>세로 정렬
+					 -->
+					<td colspan="4" align="left" valign="top" height="200">
+						HTML을 이용한 게시판 내용 보기 화면 제작
+					</td>
+				</tr>
+			</tbody>
+						<tfoot>
+				<tr>
+					<td colspan="4" align="right">
+						<a href="html_83_1.html">목록</a>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</center>
+
+</body>
+
+</html>
