@@ -1,0 +1,67 @@
+<!-- 
+	입력 양식 => 그룹 
+	<fieldset> : CSS => table 대체
+	<lavel>
+	<legend> 
+		
+	입력 양식 
+	 type=text => 검색
+	 type=password
+	 type=button, submit
+	 type=radio, checkbox
+	 <select> <textarea>
+	 type=number => 수량 
+	 
+	 파일 업로드 / 등록 => type=file
+	 
+	  <h1> <h3>
+	  <a>
+	  <img> 
+	  <b>
+	  <br> , <p> 
+	  ================
+	  <ul> , <table>
+		   | 메뉴 
+	  <div>          <span>
+	  | 화면 나누기     | 특정 부분에 CSS
+	 <form method=GET> :전송할 내용을 한 번에 모아서 처리
+     ================
+      = GET / POST
+      GET : URL을 통해서 서버로 입력값 전송 => 노출이 된다
+      POST : 내부 네트워크로 전송 => 보안 뛰어남
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>관련된 입력 양식을 그룹화</h1>
+	<fieldset>
+		<legend>개인 정보</legend>
+		<table width="500">
+			<tr>
+				<th width="20%"><label for="name">이름</label></th>
+				<td width="80%"><input type="text" id="name" size="15"> </td>
+			</tr>
+			<tr>
+				<th width="20%"><label for="addr">주소</label></th>
+				<td width="80%"><input type="text" id="addr" size="35"> </td>
+			</tr>
+			<tr>
+				<th width="20%"><label for="email">이메일</label></th>
+				<td width="80%"><input type="text" id="email" size="35"> </td>
+			</tr>
+			<tr>
+				<th width="20%"><label for="content">소개</label></th>
+				<td width="80%">
+					<textarea rows="10" cols="40"></textarea> <!-- 바로 옆에 붙이지 않으면 공백 발생-->
+			</tr>
+			<!-- 속성에 값을 주입 할 때 공백이 있으면 안 된다 
+			     input type=text value=Hong Gil Dong (x) 
+			     input type="text" value="Hong Gil Dong" (o) -->
+		</table>
+	</fieldset>
+</body>
+</html>

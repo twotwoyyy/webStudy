@@ -1,0 +1,59 @@
+<!-- 
+	버튼 종류
+	type="submit"   : 전송 
+	                  회원가입, 글쓰기... 
+	type="button"   : 일반 버튼 => 기능이 없다 (자바스크립트 이용)
+				      취소(이전 페이지로 이동), 아이디 중복 체크, 우편 번호 검색... 
+	type="radio"    : 선택 => 성별, 동의 여부...
+	type="checkbox" : 취미, 다중 조건 선택...
+	type="image"    : 이미지 버튼 => submit (전송 버튼 역할)
+	=======> <button>클릭</button> => submit
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<h1>버튼 종류</h1>
+	<table width="450">
+		<tr>
+			<th width="30%">성별</th>
+			<td width="70%">
+				<input type="radio" checked name="sex">남자
+				<input type="radio" name="sex">여자
+			</td>
+		</tr>
+		<tr>
+			<th width="30%">이미지 버튼</th>
+			<td width="70%">
+				<input type="image" src="icon_user.png">
+				<input type="image" src="icon_write.png">
+				<input type="image" src="icon_store.png">
+			</td>
+		</tr>
+		<tr>
+			<th width="30%">취미</th>
+			<td width="70%">
+				<input type="checkbox">운동
+				<input type="checkbox">독서
+				<input type="checkbox">게임
+				<input type="checkbox">여행
+				<input type="checkbox">낚시
+			</td>
+		</tr>
+		<tr>
+			<th width="30%">버튼종류</th>
+			<td width="70%">
+				<input type="button" value="취소">
+				<input type="submit" value="전송">
+				<button>전송</button>
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html>

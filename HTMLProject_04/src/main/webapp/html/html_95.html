@@ -1,0 +1,105 @@
+<!-- 
+	95page 
+	입력 양식 태그
+	========== 사용자에게 정보를 입력할 수 있게 만들어 주는 태그 
+	  ex) 로그인 아이디/비밀번호, 회원가입, 검색, 페이지 이동 버튼 
+	  문자 입력
+	   = 한 줄 입력창
+	     <input type="text">
+	      속성
+	       type=""
+	       name : 자바에서 입력값을 받는 경우, id, class => CSS, JavaScript
+	       size="" 입력창 크기
+ 		   required : 반드시 입력 유도 
+	   = 비밀번호 입력창
+	     <input type="password">
+	   = 여러 줄 입력창
+	     <textarea> 
+		  속성 
+		   name : 자바에서 입력값 읽을 경우
+		   rows : height
+		   cols : width
+		   required : 반드시 입력 유도 
+		   
+	  버튼 종류
+	  ======
+	   = 일반 버튼 
+	     <input type=button>
+	      속성
+	       value : 버튼 위 설정하는 문자 <input type=buttom value="로그인">
+	   = 전송 버튼
+	     <input type=submit>
+	      속성
+	       value : 버튼 위 설정하는 문자 <input type=submit value="전송">
+	   = 초기화 
+	     <input type=reset>
+	     속성
+	       value : 버튼 위 설정하는 문자 <input type=reset value="초기화">
+	   = 이미지 버튼
+	     <input type=image src="파일명">
+	   = 라디오 버튼
+	     <input type=radio name="sex" checked> 남자
+	     <input type=radio name="sex" checked> 여자
+	     *** name 속성이 같아야 한 개만 선택된다 (그룹)
+	   = 체크 버튼
+	     <input type=checkbox value=""> 운동
+	     
+	  선택창
+	  ====
+	   = 날짜
+	     <input type=date> : 달력 
+	   = 파일
+	     <input type=file> : 파일 다이얼로그
+	   = 지정된 데이터 선택
+	     <select> 
+			 <option>
+		 => 1개 선택
+		 <select multiple> 
+			 <option>
+	     => 여러 개 선택
+	   = 숫자 선택
+	     <input type=number>
+	   = 바 선택
+	     <input type=range>
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<formbody>
+	<!--
+		<input type="text">
+		=> read only : 입력창 비활성화 
+		=> required : 반드시 입력 값이 필요한 경우
+		=> 라벨 없이 사용 : placeholder="아이디"
+		-->
+	<h1> 로그인 </h1>
+	<form action="input_html">
+		<table width="350">
+			<tr>
+				<th width="30%">ID</th>
+				<td width="70%">
+					<input type="text" size="15" required placeholder="아이디"> <!-- readonly : 비활성화 / required notnull-->
+				</td>
+			</tr>
+			<tr>
+				<th width="30%">Password</th>
+				<td width="70%">
+					<input type="password" size="15" required placeholder="비밀번호">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="로그인">
+					<input type="button" value="취소">
+				</td>
+			</tr>
+		</table>
+	</form>
+	</body>
+	</body>
+
+	</html>

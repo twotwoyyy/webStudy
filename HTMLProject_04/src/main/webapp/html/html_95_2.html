@@ -1,0 +1,104 @@
+<!-- 
+	기타 input
+	textarea : 여러 줄 입력 (내용 입력)
+	spinner : <input type=number>	
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<h1>기타 입력 태그</h1>
+	<table width="500">
+		<tr>
+			<th width="30%">생년월일</th>
+			<td width="70%">
+				<input type="date" size="15"> <!-- IC(X) -->
+			</td>
+		</tr>
+		<tr>
+			<th width="30%">나이</th>
+			<td width="70%">
+				<input type="number" max="100" min="1"> <!-- spinner 버튼 -->
+			</td>
+		</tr>
+		<tr>
+			<th width="30%">가격</th>
+			<td width="70%">
+				<input type="range" max="100" min="1" value="20">
+			</td>
+		</tr>
+		<tr>
+			<th width="30%">파일 업로드</th>
+			<td width="70%">
+				<input type="file" size="20">
+			</td>
+		</tr>
+		<tr>
+			<th width="20%">색상</th>
+			<td width="70%">
+				<input type="color">
+			</td>
+		</tr>
+		<tr>
+			<th width="30%">소개</th>
+			<td width="70%">
+				<textarea rows="8" cols="30"></textarea>
+		</tr>
+		<tr>
+			<th width="30%">전화</th>
+			<td width="70%">
+				<select>
+					<option>010</option>
+					<option>011</option>
+					<option>016</option>
+					<option>017</option>
+					<option>018</option>
+					<option>019</option>
+				</select>
+				<input type="text" size="7">-<input type="text" size="7">
+			</td>
+		</tr>
+		<tr>
+			<th width="30%">상품</th>
+			<td width="70%">
+				<select multiple>
+					<option>사과</option>
+					<option>배</option>
+					<option>오렌지</option>
+					<option>수박</option>
+					<option>멜론</option>
+					<option>복숭아</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th width="30%">과목</th>
+			<td width="70%">
+				<select>
+					<optgroup label="Front-End">
+						<option>HTML5</option>
+						<option>CSS3</option>
+						<option>JavaScript(ES6)</option>
+						<option>JQuery(Ajax)</option>
+						<option>VueJS(vueJS3,vuex)</option>
+						<option>ReactJS(react,redux,react-query)</option>
+						<option>NodeJS,NextJS</option>
+					</optgroup>
+					<optgroup label="Back-End">
+						<option>Java</option>
+						<option>Oracle</option>
+						<option>JSP(ThymeLeaf)</option>
+						<option>Spring(Spring-Boot)</option>
+					</optgroup>
+				</select>
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html>

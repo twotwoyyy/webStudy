@@ -1,0 +1,75 @@
+<!-- 
+	미디어 태그 
+	  이미지 / 동영상 / 음성
+	  이미지 ======== <video> <audio> => <embed>
+	  ====
+	   <img> : 독립 태그, inline형식 (가로로 출력/System.out.print)
+	    속성 
+	      = src : 파일 선택 => URL, 파일
+	      = width
+	      = height
+	      = title : 풍선 도움말 
+	      = 이미지를 변경 => id, class, name, style
+	                     ====================== 모든 태그가 가지고 있다 (CSS,JavaScript :구분자)
+	      html
+	      ====
+	       a.html
+	       a.jpg
+	       a.jpg => html안에 이미지가 바로 들어가 있을 경우 <img src="a.jpg">
+	       
+	      html
+	      ====
+	        images
+	        ======
+	        a.jpg
+	        b.jpg
+	       a.thml => html안 images 폴더 안에 들어가 있는 경우 <img src="images/a.jpg">
+	       
+	     html
+	     ====
+	     images
+	     ======
+	      a.jpg => html 폴더 밖에 나란히 폴더가 있을 경우 <img src="../images/a.jpg">
+	      
+	     html
+	     ====
+	       input
+	       ======
+	        a.html => 작성
+	        
+	     images
+	     ======
+	        a.jpg => html 폴더 안 input 폴더에서 작성중 이미지가 바깥 폴더에 있을 경우<img src="../../imges/a.jpg">
+	  동영상
+	  ====
+	  <embed>
+	  키 검색시 소스보기 => /watch?v= 뒤 키 복사
+	zGIrVjEbRNM\u0026pp=ygUJ7JWE7J2067iM
+	입력 태그
+	화면 분할 태그 / 시멘텍
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<h1> URL 이미지 출력 </h1>
+	<img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88297/88297_320.jpg" width="150" height="200"
+		title="북극백화점의 안내원">
+	<h1> 파일명을 이용한 이미지 출력 </h1>
+	<img src="images/m1.jpg" width="150" height="200" title="인사이드 아웃2"> <!-- 밖에 있으면 ../images/m1.jpg-->
+	<img src="images/m2.jpg" width="150" height="200" title="콰이어트 플레이스-첫째 날">
+	<img src="images/m3.jpg" width="150" height="200" title="핸섬가이즈">
+	<img src="images/m4.jpg" width="150" height="200" title="하이재킹">
+	<img src="images/m5.jpg" width="150" height="200" title="탈주">
+	<img src="images/m6.jpg" width="150" height="200" title="프렌치 수프">
+	<img src="images/m7.jpg" width="150" height="200" title="아가씨 확장판">
+	<h1> 동영상 실행 </h1>
+	<embed src="http://youtube.com/embed/zGIrVjEbRNM\u0026pp=ygUJ7JWE7J2067iM" width="500" height="400">
+</body>
+
+</html>
