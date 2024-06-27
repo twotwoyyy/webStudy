@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	a{
+		display: block;
+		color: black;
+		text-decoration: none;
+	}
+	a:hover{
+		color: gray;
+		text-decoration: underline;
+	}
+	img{
+		width:150px;
+		height:200px;
+	}
+	img:hover{
+		cursor: pointer; /* hand-cursor : 링크 */
+		border: 3px solid red; /* 테두리, solid : 일반 라인선, dashed ---선, dotted ....선 */
+		opacity: 0.3; /*투명모드 0.0~1.1 */
+	}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script ype="text/javascript">
+	$(function(){
+		$('img').click(function(){
+			alert("그림 선택")
+		})
+	})
+</script>
+</head>
+<body>
+	<a href="#">대표팀 선배한테 "패스가 X같네" 욕설? 하다하다 </a>
+	<a href="#">이러다 30-30-30 달성? KIA 21세 괴물타자, 아직은</a>
+	<a href="#">오타니, 104년 만에 '구단 최초 역사' 홈런으로 썼다!</a>
+	<a href="#">'굿바이 SON' 연봉 삭감하고 AC밀란 계약 합의..토트</a>
+	<a href="#">트레이드 후 한 달..삼성 박병호-KT 오재일, 첫 맞대</a>
+	<img src="m1.jpg">
+	<img src="m2.jpg">
+	<img src="m3.jpg">
+	<img src="m4.jpg">
+	<img src="m5.jpg">
+	<img src="m6.jpg">
+	<img src="m7.jpg">
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!-- 
+	1. CSS => 화면 UI (디자인)
+	   ===
+	  1) Selector (선택자)
+	    => 태그를 선택 
+	       ======== 태그의 속성을 이용해서 태그 구분 
+	       태그, 속성의 이름
+	    => CSS
+	       = 태그 선택
+	         태그명{
+				 속성:값
+				 === 이미 제작
+				 여러 개 사용시는 
+				 속성:값,
+				 속성:값...
+				 주석 : /* */
+			 }
+		=> CSS 사용
+		   1) 내부 CSS  : 파일 1개에 대한 CSS 적용
+		     <head> 
+				 <style>
+					 CSS 구현
+			     </style>
+			 </head>
+		   2) 외부 CSS  : 공통으로 사용되는 CSS를 파일로 제작하여 여러 개 파일 적용
+		      .css 파일 : 파일 제작 
+		      파일 읽기
+		       <head>
+				   <link rel="stylesheet" href="파일명|URL주소">
+			   </head>
+		   3) 인라인 CSS : 태그 1개에 대한 CSS적용
+		       <img src="" style="">
+		       *** 모든 HTML 태그는 style 속성을 가지고 있다 
+	 1. 선택자 : CSS / JavaScript / Jsoup => 태그를 구분 (선택자)
+	   = 전체 선택자 : * 
+	     *{
+			 => 전체 글꼴 줄 때, 여백 없이..
+		 } 
+		 => 특별한 경우가 아니면 사이트는 글꼴을 1가지로 처리하는 것이 좋다 
+       = 태그 선택자 : 태그명 => 태그명은 같은 이름이 많이 존재 
+         태그명{
+			 CSS속성명 : 값 
+		 }
+	   = ID 선택자 : 각 태그의 id는 중복없는 구분자 (중복xxx)
+	     <div id="a"> : 모든 태그가 공통으로 가지고 있는 속성
+			            ======= 1. id
+			                    2. class
+			                    3. name
+			                    4. style
+	     #ID명{
+			 CSS 속성명:값
+		 }
+	   = class 선택자 : 중복 가능한 구분자 => 같은 CSS를 적용하는 경우 
+	     <div class="a"> : 목록 출력 <td>,<li>,<dd> => 한번에 같은 CSS를 적용
+		 .class명{
+			 CSS의 속성명 : 값
+		 }
+		 ========================== 기본 선택자
+		 => ID,CLASS => CSS용, 자바스크립트 제어 
+		 => CSS는 HTML 제작 후에 나중에 적용이 가능  
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		/* 태그명#아이디명 
+	   h1.h
+	   태그명.클래스명
+	   */
+		div.h {
+			color: aqua
+		}
+
+		.h {
+			color: blueviolet;
+		}
+
+		#a {
+			color: deeppink;
+		}
+
+		#b {
+			color: limegreen;
+		}
+
+		#c {
+			color: lightskyblue;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="h">Hello CSS</div>
+	<h1 class="h">Hello CSS</h1>
+	<h1 class="h">Hello CSS</h1class>
+		<h1 id="a">Hello CSS</h1>
+		<h1 id="b">Hello CSS</h1>
+		<h1 id="c">Hello CSS</h1>
+
+</body>
+
+</html>

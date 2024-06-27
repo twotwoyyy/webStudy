@@ -1,0 +1,61 @@
+<!--
+	태그, 전체, 아이디, 클래스
+	===  === ====  ====
+	               .클래스명{
+					   속성:값
+				   }
+	         #아이디명{
+				 속성:값, 속성:값...
+			 }
+	     *{
+			 CSS속성 : 값
+			 => 사이트 글꼴, margin/padding
+		 }
+	태그명 {
+		CSS 속성: 해당 값
+	}
+	속성 선택자
+	========
+	 선택자[속성명=값]
+	 
+	 input[type="text"]
+	 <input type="text">
+	 
+	 a[href="http://www.daum.net"]
+	 a[href^="http"] ^= => http로 시작.. => equals
+	 a[href$="net"] $= => net으로 끝     => endsWith
+	 a[href*="www"] *= => www가 포함     => contains
+	 a[href|="gif|jpg"] | => | 거나~
+	 <a href="http://www.daum.net">
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	input[type="submit"]{ /* 값이 같은 경우 */
+		border-radius: 10px;
+	}
+	input[type^="b"]{ /* b로 시작하는 값 */
+		background-color: hotpink;
+	}
+	input[type$="t"]{ /* t로 끝나는 값 */
+		background-color: lightskyblue;
+	}
+	input[type*="b"]{ /* b를 포함하는 값 */
+		background-color: indigo;
+		color: white;
+	}
+	/*
+	img[src*=/recipe/]
+	*/
+</style>
+</head>
+<body>
+	<input type="text" size="20"><br>
+	<input type="button" value="Click"><br>
+	<input type="submit" value="전송"><br>
+	<input type="password" size="20">
+</body>
+</html>

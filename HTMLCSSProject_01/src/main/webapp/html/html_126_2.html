@@ -1,0 +1,43 @@
+<!--
+	후손 선택자 
+	자손 선택자
+	
+	<div>
+		<a></a>
+		<p></p>
+		<span></span>
+		<span>
+			<p></p>
+		</span>
+	</div>
+	
+	             div
+	              |   => div > p+span : 형제 선택자 (가장 친한)
+	    ======================
+	    |    |      |      | 
+	    a    p    span    span => 자손 선택자
+	                       |
+	                       p   => 후손 선택자
+	                       
+	   자손 선택자
+	   ========
+	   div > a
+	   div > p
+	   div > span
+	   
+	   후손 선택자
+	   ========
+	   div span p
+	   
+	   div p => 
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
