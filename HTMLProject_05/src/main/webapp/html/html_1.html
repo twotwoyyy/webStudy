@@ -1,0 +1,124 @@
+<!-- 
+	HTML (브라우저에서 실행되는 언어) => ML 사용이 가능하다
+	ML (MarkUp Language) => 태그 + 속성 
+	<태그명 속성명=값>
+	===== ====
+  => HTML : 태그와 속성이 정해져 있다 => 정적 페이지 
+  => XML : 태그와 속성이 사용자 정의 => 태그와 속성을 직접 제작 => 확장된 MarkUp Language
+         : 문서 저장, 환경 설정 => server.xml, application.xml....
+         : 서버단 => MyBatis / Spring 
+  => JDBC / Parsing (데이터를 추출 : HTML/XML/JSON) => 크롤링 => HTML/XML에 있는 데이터 추출
+  
+  1. HTML
+      특징) 정적 페이지 (태그 고정 = 표준화)
+        이미 제작된 상태 = 암기 : 태그명, 속성, 화면에 어떻게 출력되는지 확인
+        => 투박하고 위치 설정이 잘 안되기 때문에 CSS(화면), JavaScript(동작)으로 보완 필요
+        
+   태그 형식)
+       =여는 태그 / 닫는 태그
+         <태그>    </태그> => <태그> 출력할 내용 </태그>
+       =독립 태그
+         <태그 /> => 데이터 출력 => <태그 속성="데이터 출력 위치"/>
+         => <태그> : /는 생략이 가능하다 ex) <br> <p> <input> <img>
+   태그의 종류)
+       =문자 출력  
+          <b> : bold체, <strong> : 강조체
+		  <h1>~<h6> : 제목 설정 
+		  *** 한 줄 문자열 => 줄바꿈 : 한 줄 내리기 <br>, 두 줄 내리기(단락) <p>
+		  <sup> : 위청자 
+			  
+       =목록 출력  
+          <ul>    : 순서가 없는 목록, 데이터 출력 <li> 
+		  <ol>    : 순서가 있는 목록, 데이터 출력 <li> 
+		  <dl>    : 데이터 출력 (상세보기), <dt>소제목 <dd>설명 첨부
+		  <table> : 줄<tr> 제목<th>| 실제 데이터<td> ex) 사원 목록, 게시판 목록, 노래 목록...
+		  *** 가장 많이 등장하는 태그
+		  <a> : 앵커 태그 => 화면 이동 <a href="URL주소">
+
+       =멀티미디어  
+          속성 => src=""
+          <img src="이미지 파일"> === gif|jpg|png
+          <embed src="동영상"> <iframe src="추가될 파일명"> (React,Vue에서 동영상 출력시 iframe)
+			       ====== include (HTML 파일 특정 부분에 다른 HTML을 추가할 수 있다)
+		  <video> <audio> : 지정된 파일만 사용 
+	   =사용자 입력창
+	      <input> 
+	        type="text"     : 한 줄 입력 
+	        type="password" : 비밀번호 입력
+	        type="file"     : 파일 업로드
+	        type="color"    : 색 선택창
+	        type="date"     : 달력
+	        type="hidden"   : 화면은 보이지 않는다 => 데이터를 감추는 경우 => UPDATE,DELETE...
+	        type="radio"    : 한 개만 선택이 가능하게 해야 한다 => 반드시 그룹 설정 (name 속성)
+	        type="checkbox" : 여러 개를 동시에 선택 
+	        type="range"    : 슬라이더바, 반드시 max,min값 지정 
+	        type="number"   : Spinner => 반드시 max,min값 지정 => 숫자 선택 => 년도/월 지정시 많이 사용
+	        type="button"   : 일반 버튼 => JavaScript로 제어 ex)우편번호 검색, 아이디 중복 체크, 취소..
+	        type="image"    : submit(기능)
+	        type="sebmit"   : 서버로 데이터 전송, 반드시 <form>와 함께 쓴다
+				              <form> 데이터 모아 한번에 서버 전송
+								  속성 : method => 전송 방식 지정 
+								         GET : URL뒤에 데이터 첨부해 전송, 노출=>보안 취약 ex) ?id=aaa..
+								         POST: 내부 네트워크, 중요 => 보안 뛰어남
+								        action => 전송할 파일 지정
+						      *** 자바 => 메소드의 매개변수를 이용해 데이터 전송, 생성자
+						      *** HTML/JSP는 메소드가 없다, URL을 이용해 전송 
+						      http://localhost/HTMLProject_05/html/html_1.html => URL
+						      ================ ===============================
+						      서버 정보           사용자 요청 정보 (URI)
+						      HTMLProject_05/html/html_1.html?page=1
+						                         ============= 앞에 있는 파일이 전송된 데이터를 받는다 
+						                         ?page = 1 : 값을 받지 못함
+						                         ?page=1 : 공백없이 출력해야 한다
+			=======================<button> : submit 기능
+	      <select>   : 한 개 선택, <select multiple> : 여러 개 선택 (combobox)
+		    - <option> 데이터 저장
+		  <textarea> : 여러 줄 입력
+			  ** 주의점 : 반드시 공백 없이 닫아야 한다 <textarea></textarea>
+			  => cols(width), rows(height)
+			  
+       = 기타 태그 
+         <fieldset> <label> <legend> : <table>을 대체 
+		 <fieldset> : 입력창을 모아서 처리
+		 <legend>   : border 구분
+			 
+       = 화면 분할
+         <div>  : 전체 화면 분할
+		 <span> : 부분적인 CSS를 적용, 부메뉴, 퀵메뉴  
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<center>
+		<table border="1" bordercolor="black" width="800" height="600">
+			<tr>
+				<td colspan="2" height="100">
+					<iframe src="header.html" width="800"></iframe>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" height="80">
+					<iframe src="nav.html" width="800"></iframe>
+				</td>
+			</tr>
+			<tr>
+				<td width="200" height="320">
+					<iframe src="aside.html" width="200" height="320"></iframe>
+				</td>
+				<td width="600" height="320">
+					<iframe src="section.html" width="600" height="320"></iframe>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" height="100">
+					<iframe src="footer.html" width="800"></iframe>
+				</td>
+			</tr>
+		</table>
+	</center>
+</body>
+</html>

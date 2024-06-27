@@ -1,0 +1,62 @@
+<!-- 
+	공간 분할
+	=======
+	 div : block => 한 줄 전체를 차지하는 태그
+	 span : inline
+	 table : block
+	 ====================
+	  block      inline
+	  세로출력      가로출력
+	 ====================
+	  div        span
+	  h1~h6      a
+	  p          img
+	  br         input
+	  목록 태그     b,sup : 글자 관련
+	  테이블 태그    select (입력)
+	  
+	  <div class="wrap">
+	      <div class="header"></div>
+	      <div class="nav"></div>
+	      <div class="aside"></div>
+	      <div class="section"></div>
+	      <div class="footer"></div>
+	  </div>
+	  
+	  HTML5 지원하는 템플릿 태그 => 찾기 쉽게 제작된 태그 : 시맨틱
+	  ====================
+	  <header>
+	  <nav>
+	  <aside>
+	  <section>
+	  <footer>
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div{
+		display: inline;
+	}
+	span{
+		display: block;
+	}
+</style>
+</head>
+<body>
+	<h1>블록 형식의 분할</h1>
+	<div>Hello HTML</div>
+	<div>Hello HTML</div>
+	<div>Hello HTML</div>
+	<div>Hello HTML</div>
+	<div>Hello HTML</div>
+	<h1>인라인 형식의 분할</h1>
+	<span>Hello HTML</span>
+	<span>Hello HTML</span>
+	<span>Hello HTML</span>
+	<span>Hello HTML</span>
+	<span>Hello HTML</span>
+</body>
+</html>

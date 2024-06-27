@@ -1,0 +1,82 @@
+<!-- 
+	HTML => GET/POST, 시맨틱
+	시맨틱 => HTML5 : 검색이 쉽게 만들어주는 태그명
+	
+	예)
+	 <aaa> <name>
+	 <bbb> <sex>
+     <ccc> <address>
+	 <ddd> <phone>
+	 <eee> <password> => 의미를 부여하는 태그 => 시맨틱  
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		#wrap {
+			width: 800px;
+			height: 600px;
+			margin: 0px auto;
+			/*가운데 정렬 */
+			background-color: red;
+		}
+
+		header {
+			width: 800px;
+			height: 100px;
+			background-color: skyblue;
+			float: left;
+		}
+
+		aside {
+			width: 30%;
+			height: 400px;
+			background-color: green;
+			float: left;
+		}
+
+		section {
+			width: 70%;
+			height: 400px;
+			background-color: yellow;
+			float: left;
+		}
+
+		footer {
+			width: 800px;
+			height: 100px;
+			background-color: blue;
+			clear: both;
+		}
+	</style>
+	<!-- 
+	=============================
+          header (로고, 검색창)	
+	=============================
+	aside |
+	광고   |  section : 주내용 => 화면이 변경
+	부메뉴  |
+	로그인  |
+    =============================
+       footer : 회사 정보 
+    =============================
+-->
+</head>
+
+<body>
+	<div id="wrap">
+	<!--<div id="header"></div>
+		<div id="aside"></div>
+		<div id="section"></div>
+		<div id="footer"></div>-->
+		<header></header>
+		<aside></aside>
+		<section></section>
+		<footer></footer>
+	</div>
+</body>
+
+</html>
