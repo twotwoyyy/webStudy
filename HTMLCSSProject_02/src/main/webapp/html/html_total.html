@@ -1,0 +1,211 @@
+<!--
+	HTML5 형식)
+	 <!DOCTYPE html> : HTML5버전을 사용한다 => 브라우저에 알려주는 상태
+	  ============= .dtd 파일 => 표준화 : w3c(www) ** 첫 번째 줄에 사용
+	   = 태그와 속성에 대한 정보 저장 
+	     1. 태그 정의 
+	        <!ELEMENT html (head.body)>
+	        <!ELEMENT head (meta*,link*,style*,script*,title)>
+	        default : 반드시 한 번만 사용 
+	        * : 0번 이상
+	        ? : 0, 1번 이상
+	        + : 1번 이상
+	        | : 둘 중 하나 선택 
+	     2. 속성 정의
+	        <!ATTLIST meta CDATA charest required> 
+	     3. Entity : 특수문자 (변수)
+	        <!ENTITY nbsp ' '> => &nbsp;
+	        <!ENTITY lt '<'> => &lt;
+	     => .dtd : MyBatis(XML), Spring => XML 자체 업체 => 반드시 제공 
+	     => DOCTYPE => 이클립스 자동완성기 => loose.dtd
+	     
+	 <html>
+		 <head>
+			 <title> : 브라우저(타이틀바)에 이름 부여
+			 <meta> : 한글 변환, 화면 이동, 모바일 크기 조정, keyword 등록
+			 <link> : CSS파일을 읽기
+			 <script> : HTML(정적 페이지) => 동적으로 변경할 때 사용 (이벤트 : 사용자 행위에 대한 처리)
+			 <style> : 화면 디자인
+			 ** HTML(태그+속성)+CSS(약간의 디자인)+JavaScript(요청 처리)
+			 JavaScript 표준화 x => 표준화 제작 (라이브러리) => JQuery, VueJS, ReactJS
+		    => 설정 파일 등록
+		 </head>
+		 <body>
+		    => 화면에 출력하는 내용 <html>, <head>, <body>를 생략하면 => 자동 <body> 인식 
+		 </body>
+	 </html> 
+
+     => HTML 형식 
+        ML (MarkUp Language) => 태그 + 속성
+        <태그명 속성=값..></태그명>
+        ====================== XML동일 (사용자 정의로만 만들어져 있다)
+        = 화면에 출력하는 데이터를 저장하는 위치
+         <태그>출력 내용</태그> <h1>출력 내용</h1>
+         <태그 속성="출력 내용"> <img src=""> <a href="">
+	    = 태그 종류
+	     <태그></태그> => 한 쌍으로
+	     <태그/> => 독립 <태그>처럼 / 생략 가능 ex)<br>,<p>,<img>,<input>..
+	      *** DOM (Document Object Model)
+	          === 메모리에 저장 시에 트리 형태로 저장
+			          <html>
+				        |
+				  ==============
+				  |            |
+				<head>       <body>
+			      |
+			==============
+			|     |      |
+		<title> <meta> <link>  ==> HTML을 많이 사용하면 속도가 저하 
+		                       ==> 수정, 새로고침시 메모리 지우고 다시 저장 
+		                       ==> 속도 향상 (깜빡이 방지)
+	=> 화면에 출력하는 태그
+	   ============== 태그 공부 : 1) 태그명 2) 속성 3) 어떤 모양으로 출력
+	                           ================================
+	                           모든 태그에 공통 속성 
+	                           => id, class, name, style, width, height
+	                              ========== ====
+	                              | 태그 구분자 | 자바와 연동
+	                              
+	  1. 텍스트 관련 태그 (문자)
+	    ** 태그 사용시 주의점 
+	       = 태그명, 속성명은 소문자
+	       = 트리 형태 => 반드시 들여쓰기 
+	    <h1> ~ <h6> : 제목 출력 => <b>포함 => block형식의 태그 
+	    <b> : bold체 => inline 형식
+		<i> : 이태릭체
+		<sub>, <sup> : 위 첨자
+		<address> : 주소창, footer에서 주로 사용 => 이태릭체
+		<small> : 작은 글씨
+		<hr> : 수평선 => block 형식
+		<ins> : 밑줄
+		<del> : 가운데 라인선
+		<mark> : 형광색 표시
+		<blockquote> : 인용부호
+		<p> : 단락
+		<pre> : 있는 그대로 출력
+			 
+	  2. 링크 태그 : 화면 이동
+	    <a> : 속성 => href="이동 URL 주소" => 가장 많이 사용되는 태그
+			
+	  3. 멀티미디어 태그 : 동영상, 이미지 출력
+	    <img> 
+	      속성 : src="이미지 파일명(gif,jpg,png)|URL"
+	            이미지 크기 조절 : width, height
+	            풍선 도움말 : title 
+	            *** width를 지정 => height는 자동으로 지정된다 
+	    <embed>
+	      속성 : src="동영상 파일명|youtube"
+	            동영상 크기 지정 : width, height
+	    <iframe> : HTML파일 안에 다른 HTML을 추가해서 사용, 동영상 출력 기능 
+			       ============================== include
+	      속성 : src="추가할 파일명|동영상 파일명"
+	            동영상 크기 지정 : width, height
+	            화면 구조 
+	            =========================================
+	              로고             검색창 => 고정
+	            =========================================
+	                               메뉴
+	            =========================================
+	             로그인     |  메뉴 클릭 시 변경 (실제 내용 출력)
+	             부메뉴     |
+	             실시간 광고 |
+	                      |
+	                      |
+	            =========================================
+	                           주소 / 제작자 => 고정 
+	            =========================================
+	            
+	  4. 목록 출력 태그
+	    <ul> : 목록이 없는 태그, 메뉴 만들 때 주로 사용 => 부메뉴 (span)
+		 |
+		<li> => 데이터 출력
+	    <ol> - <li>, <dl> - <dt>,<dd>
+		목록 있는 태그    데이터 목록 
+		<table> : 목록 => 여러 개 동시 출력 가능 => 사용하지 않는 것 권장 <caption> 사용하라
+		   <caption> : 테이블의 제목
+		   <tr> : 한 줄 만들기
+		    |
+		<th>|<td> => 데이터 출력
+			
+	      <table> 속성 
+			 = width / height => 단위 : px
+			 = border : 테두리 
+			 = bordercolor : 테두리 색상 
+			   = 지정된 색상, 16진법 #0000FF, rgb(255.0.222), 투명 모드 rgba(255,255,255,0.1) 
+			 = cellspacing(칸 간격) / cellpadding (칸과 문자의 간격) => double선을 갖고 있음
+			 = background : 테이블에 이미지 배경 background:url('이미지 파일명')
+		  <tr> 속성
+			 = height, bgcolor(색상)=> tr:hover
+		  <td><th> 속성
+			 = width/height
+			 = align  (가로 정렬) => left|center|right => default는 left
+			 = valign (세로 정렬) => top|middle|bottom => default는 middle
+			 = rowspan : 행 병합
+			 = colspan : 열 병합 
+			 
+	  5. 입력 관련 태그
+	    <input>
+	       1) type="text" : 한 줄 문자열
+	       2) type="password" : 비밀번호 입력
+	       3) type="file" : 파일 선택
+	       4) type="number" : 나이, 금액
+	       5) type="date" : 날짜
+	       6) type="range" : slider
+	       7) type="email" : email 주소 입력
+	       8) type="button" : 일반 버튼 => 자바스크립트를 통해 처리
+	       9) type="submit" : 지정된 파일로 데이터를 전송 
+	      10) type="reset" : 초기화 버튼
+	      11) type="radio" : type="checkbox"
+	    <select> : 콤보박스 => 반드시 <option> : 값 설정 태그 동반
+			       선택 시에 값을 가지고 올 수 있다
+			       <select>
+					   <option>이름</option>
+					   <option>제목</option>
+					   <option>내용</option>
+				   </select>
+			       <select>
+					   <option value="name">이름</option>
+					   <option value="subject">제목</option>
+					   <option value="content">내용</option>
+				   </select>
+		<textarea> : 여러 줄 입력값이 있는 경우
+		<button>   : <button></button> => submit버튼과 동일 => 데이터 전송 목적 
+		             <input type=image> => submit
+		           
+	  6. 화면 분할 태그
+	    <div> : 세로 분할 (block) => 화면 구조
+			                      ======= Layout
+			                      시맨틱 태그 : header / nav / section / aside / footer
+			                                로고|검색창  메뉴     본내용   로그인|부메뉴 회사정보등
+		<sapn>: 가로 분할 (inline) => 필요한 부분 CSS적용
+		=> 단독 사용이 아니라 CSS사용해 위치, 크기 정함
+		
+	  7. 기타 태그 : 입력 태그를 그룹화, CARD(이미지와 제목을 묶어서 통합), 이미지 분할
+	    <fieldset> <label> <legend>
+	    <figure> <figcation> => 이미지와 데이터를 연결해서 처리
+		<map> : 부분 클릭  
+-->     
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	h1{
+		background-color: seagreen;
+	}
+	span{
+		background-color: plum;
+	}
+</style>
+</head>
+<body>
+<!--<h1>Hello HTML</h1>
+	<span>Hello HTML</span>-->
+	<h1>figure사용법</h1>
+	<figure>
+		<img src="m1.jpg" width="150" height="200">
+		<figcaption>인사이드아웃2</figcaption>
+	</figure>
+</body>
+</html>
