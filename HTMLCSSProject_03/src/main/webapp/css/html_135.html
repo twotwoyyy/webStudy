@@ -1,0 +1,45 @@
+<!--
+	속성 선택자 => 태그가 가지고 있는 속성 (값)에 대해 처리 
+	태그명[속성명=값] => equals -> eq()
+	태그명[속성명^=값] => startsWith
+	태그명[속성명$=값] => endsWith => img 확장자 찾기
+	태그명[속성명*=값] => contains => 크롤링(img)
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	/*
+	input[size="30"]{
+		background-color: tomato;
+	}
+	input[size^="1"]{
+		background-color: steelblue;
+	}
+	input[size$="0"]{
+		background-color: chartreuse;
+	}*/
+	input[type*="e"]{
+		background-color: lightgoldenrodyellow;
+	}
+	img[src="http"]{
+		border: 3px solid tomato;
+	}
+	/* class 찾기 */
+</style>
+</head>
+<body>
+	<input type="text" size="20"><br>
+	<input type="password" size="10"><br>
+	<input type="file" size="30"><br>
+	<input type="date" size="30"><br>
+	<input type="number" size="10"><br>
+	<img src="http">
+	<img src="http">
+	<img src="https">
+	<img src="http">
+	<img src="https">
+</body>
+</html>
