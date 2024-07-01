@@ -1,0 +1,40 @@
+<!--
+	
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script>
+	let i=0;
+	$(function(){
+		$('input[type="button"]').click(function(){
+			if(i==0){
+				$(this).val('취소');
+				$('#write').show();
+				i=1;
+			}else{
+				$(this).val('댓글');
+				$('#write').hide();
+				i=0;
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<table border="1" border-color="black" width="500">
+		<tr>
+			<td>Hello Display</td>
+			<td><input type="button" value="댓글"></td>
+		</tr>
+		<tr style="display: none;" id="write">
+			<td>
+				<textarea rows="5" cols="50"></textarea>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!-- 
+	1. display
+	     none block inline inline-block(width,height)
+	     table table-row table-col 
+	2. border
+	     border-width border-style border-color 
+	     => border-top-width(style,color)
+	        border-bottom-width(style,color)
+	        border-left-width(style,color)
+	        border-right-width(style,color)
+	        ===============================
+	        border-collapse : 라인선 통합 
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- CSS파일 읽을 때 = 파일 : 외부 CSS (재사용, 공통 적용) --> 
+<link rel="stylesheet" href="table.css">
+<style>
+	.table_content{
+		margin:0px auto;
+	}
+	h1{
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+	<h1>자유 게시판</h1>
+	<table class="table_content" width="800">
+		<tr>
+			<th>번호</th>
+			<th>제목</th>
+			<th>이름</th>
+			<th>작성일</th>
+			<th>조회수</th>
+		</tr>
+		<tr class="dataTr">
+			<td class="tdcenter">1</td>
+			<td><a href="#">CSS로 테이블 디자인</a></td>
+			<td class="tdcenter">홍길동</td>
+			<td class="tdcenter">2024-07-01</td>
+			<td class="tdcenter">10</td>
+		</tr>
+				<tr class="dataTr">
+			<td class="tdcenter">2</td>
+			<td><a href="#">CSS로 테이블 디자인</a></td>
+			<td class="tdcenter">홍길동</td>
+			<td class="tdcenter">2024-07-01</td>
+			<td class="tdcenter">10</td>
+		</tr>
+				<tr class="dataTr">
+			<td class="tdcenter">3</td>
+			<td><a href="#">CSS로 테이블 디자인</a></td>
+			<td class="tdcenter">홍길동</td>
+			<td class="tdcenter">2024-07-01</td>
+			<td class="tdcenter">10</td>
+		</tr>
+	</table>
+	<table class="table_content" width="800">
+		<tr>
+			<td class="tdleft">
+				<select>
+					<option>이름</option>
+					<option>제목</option>
+					<option>내용</option>
+				</select>&nbsp;
+				<input type="text" size="15">
+				<button>검색</button>
+			</td>
+			<td class="tdright">
+				<button>이전</button>
+				1 page / 10pages
+				<button>다음</button>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

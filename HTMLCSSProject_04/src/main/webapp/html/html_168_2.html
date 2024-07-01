@@ -1,0 +1,59 @@
+<!--
+	1. 단위 
+	   px / % / em(배수단위)
+	2. 색상 단위
+	   background-color : red
+	   background-color : rgb(255,255,255)
+	   background-color : #F0F	   
+	3. URL 단위 
+	   background:url('경로명')
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	p:nth-child(1){
+		background-color: lightsalmon
+	}
+	p:nth-child(2){
+		/*font-size: 100%;*/
+		font-size: 1.0em;
+		background-color: #F00;
+	}
+	p:nth-child(3){
+		/*font-size: 150%;*/
+		font-size: 1.5em;
+		background-color: rgb(255, 128, 192);
+	}
+	p:nth-child(4){
+		/*font-size: 200%;*/
+		font-size: 2.0em;
+		background-color: #FFF000;
+	}
+	div{
+		width: 500px;
+		height: 500px;
+		background-image: url(icon_user.png);
+		/*background: no-repeat;/* 반복하지 않는다 */
+		/*background-size: cover;*/
+		background-size: width=500px height=500px;
+	}
+	h1{
+		color: white;
+		padding-left: 100px;
+		padding-top: 250px;
+	}
+</style>
+</head>
+<body>
+	<p>내일부터 유류세 리터당 휘발유 41원·경유 38원 오른다 </p>
+	<p>기재부, 아시아 13개국 중견공무원 초청 금융정책 연수</p>
+	<p>항공엔진 부품 이어 `독자엔진` 개발 도전..한화에어</p>
+	<p>"공무원 중 가장 희귀"…'유퀴즈' 나온 그 직업 합격자…</p>
+	<div>
+		<h1>Hello Background</h1>
+	</div>
+</body>
+</html>
