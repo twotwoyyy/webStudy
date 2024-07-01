@@ -1,5 +1,6 @@
 package com.sist.dao;
 import lombok.Data;
+
 @Data
 public class MusicVO {
 	private int mno,idcrement;
