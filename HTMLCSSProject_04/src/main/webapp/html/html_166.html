@@ -1,0 +1,71 @@
+<!--
+	margin을 이용한 가운데 정렬
+	
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	*{
+		margin:0px;
+		padding:0px;
+		/* 모든 태그, 여백을 사용하지 않는다, 글꼴 통일 */
+	}
+	img{
+		width: 130px;
+		height: 200px;
+		margin-left: 3px;
+	}
+	.container{
+		width: 1200px;
+		height: 500px;
+	/*  border: 2px solid black;*/
+		margin: 0px auto;
+	}
+	.row{
+		width: 1000px;
+	/*	border: 2px solid green;*/
+		margin: 0px auto;
+	}
+	/*
+	    solid / dotted / double 
+	*/
+	#m1{
+		border: 2px solid green;
+	}
+	#m2{
+		border: 2px dotted green;
+	}
+	#m3{
+		border: 2px dashed green;
+	}
+	#m4{
+		border: 2px double green;
+	}
+	#m5{
+		border: 2px inset green;
+	}
+	#m6{
+		border: 2px outset green;
+	}
+	#m7{
+		border: 2px groove green;
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<img src="m1.jpg" id="m1">
+			<img src="m2.jpg" id="m2">
+			<img src="m3.jpg" id="m3">
+			<img src="m4.jpg" id="m4">
+			<img src="m5.jpg" id="m5">
+			<img src="m6.jpg" id="m6">
+			<img src="m7.jpg" id="m7">
+		</div>
+	</div>"
+</body>
+</html>
