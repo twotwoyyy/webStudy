@@ -1,0 +1,52 @@
+<!--
+	absolute / z-index
+	절대 좌표점 / 출력순서 변경 
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+	.a{
+		width: 300px;
+		height: 200px;
+		display: block;
+		position: absolute;/*절대 좌표 top:0px left:0px*/
+	}
+	.a:nth-child(1){
+		top: 10px;
+		left: 10px;
+		z-index: 10;
+	}
+	.a:nth-child(2){
+		top: 50px;
+		left: 50px;
+		z-index: 20;
+	}
+	.a:nth-child(3){
+		top: 90px;
+		left: 90px;
+		z-index: 100;
+	}
+	.a:nth-child(4){
+		top: 130px;
+		left: 130px;
+		z-index: 30;
+	}
+	.a:nth-child(5){
+		top: 170px;
+		left: 170px;
+		z-index: 40;
+	}
+</style>
+</head>
+<body>
+	<img src="card1.png" class="a">
+	<img src="card2.png" class="a">
+	<img src="card3.png" class="a">
+	<img src="card4.png" class="a">
+	<img src="card5.png" class="a">
+</body>
+</html>
