@@ -1,0 +1,44 @@
+<!--
+	위치 속성 공식 
+	position (absolute|relative|fixed)
+	          => static(default)
+	static : HTML 코딩 순서대로 배치
+	absolute : 원하는 위치에 태그 배치 => 좌표 브라우저 중심 
+	           직접 배치 (top|letf|bottom|right)
+	relative : 이전 태그 위치를 참조 배치 (위에 있는 태그)
+	           Layout : 화면구도, 지도 이미지
+	fixed    : 고정 좌표 => 메뉴, 쿠키 출력
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.content{
+		width: 600px;
+		
+	}
+	#image{
+		position: fixed;
+		top: 10px;
+		right: 400px;
+		width: 300px;
+		height: 400px;
+	}
+</style>
+</head>
+<body>
+	<img src="base.jpg" id="image">
+	<div class="content">
+		<p>
+[OSEN=이후광 기자] 또 하나의 입단테스트 성공신화가 탄생하는 것일까. 
+LG 트윈스에서 방출된 좌완투수가 KT 위즈로 이적해 반전 스토리를 써내고 있다. 
+프로야구 KT 위즈 이강철 감독은 최근 수원에서 취재진과 만나 롱릴리프 전천후로 활약 중인 성재헌(27)을 언급하며 그의 헌신에 박수를 보냈다. 
+이 감독은 “육청명 등 어린 투수들은 성장이 더딘데 (성)재헌이는 많이 늘고 있다. 
+계속 경기를 나가면서 발전하는 모습을 보인다. 또 그런 모습이 보이니까 계속 기용하게 된다. 
+28일 삼성전에서 성재헌이 없었다면 조이현을 그렇게 빨리 바꾸지 못했을 것”이라고 칭찬했다. 
+		</p>
+	</div>
+</body>
+</html>

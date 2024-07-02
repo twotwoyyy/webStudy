@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+	.wrap{
+		width: 900px;
+		height: 900px;
+		border: 1px solid tomato;
+		position: relative; /*absolute는 브라우저 기준이라 relative 써야 한다*/
+	}
+	.a{
+		width: 300px;
+		height: 200px;
+		position: absolute; /*absolute는 브라우저 기준이라 relative 써야 한다*/
+	}
+	.a:nth-child(1){
+		top: 0px;
+		left: 0px;
+	}
+	.a:nth-child(2){
+		top: 0px;
+		right: 0px;
+	}
+	.a:nth-child(3){
+		top:350px;
+		left: 300px;
+	}
+	.a:nth-child(4){
+		bottom: 0px;
+		left: 0px;
+	}
+	.a:nth-child(5){
+		bottom: 0px;
+		right: 0px;
+	}
+</style>
+</head>
+<body>
+	<div class="wrap">
+	<img src="card1.png" class="a">
+	<img src="card2.png" class="a">
+	<img src="card3.png" class="a">
+	<img src="card4.png" class="a">
+	<img src="card5.png" class="a">
+	</div>
+</body>
+</html>
