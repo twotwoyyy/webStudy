@@ -1,0 +1,69 @@
+<!--
+	194page => 위치 속성 
+	================== 좌표점 (setBounds())
+	 = float => 위치 지정 (left|right)
+	 = z-index => 레이어 (출력 순위 결정) => 값이 높을 수록 위로 올라온다 (자바: CardLayout)
+	 = clear : float 속성을 해제 
+	 = position 
+	   => absolute : 절대 좌표 => 지도
+	   => relative : 상대 좌표 
+	   => fixed    : 고정 좌표 => 퀵메뉴|이미지|메뉴 고정
+	   => static   : 소스 순서대로 배치 (default)
+	 => 위치 지정 
+	    top 
+	    left
+	    right
+	    bottom
+	    
+	    ==================================
+	                  top
+	             =============
+	      left                   right       
+	             
+	             =============
+	                bottom
+	    ================================== 
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.box{
+		width: 100px; height: 100px;
+		position: absolute;
+		
+	}
+	.box:nth-child(1){
+		background-color: tomato;
+		left: 10px;
+		top: 10px;
+		z-index: 100;
+		/*순서 변경 z-index*/
+		/*
+		  부메뉴 (span)
+		  ===========
+		  실시간 채팅
+		*/
+	}
+	.box:nth-child(2){
+		background-color: darkseagreen;
+		left: 50px;
+		top: 50px;
+		z-index: 10;
+	}
+	.box:nth-child(3){
+		background-color: skyblue;
+		left: 90px;
+		top: 90px;
+		z-index: 1;
+	}
+</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+</body>
+</html>
