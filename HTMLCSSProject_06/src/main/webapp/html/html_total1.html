@@ -1,0 +1,161 @@
+<!--
+	
+	CSS 관련 속성 
+	==========
+	박스 속성 
+	  => 템플릿 제작 
+	     margin : 태그와 태그 사이의 여백 
+	       margin-top 
+	       margin-left
+	       margin-right
+	       margin-bottom
+	       margin : top right bottom left 
+	     padding : 태그 안의 이미지, 글자 안 여백 
+	       padding-top
+	       padding-left
+	       padding-right
+	       padding-bottom
+	       padding: top right bottom left
+	               ======================= 시계 방향
+	     border : 테두리
+	       border-width : 두께
+	       border-color : 색상
+	       border-style : solid, dotted, dashed, double (선의 종류)
+	       border-radious : 타원형 (왼쪽위 오른쪽위 오른쪽아래 왼쪽아래)
+	       border : width style color 
+	       *** border-collpase :라인선 병합
+	       전체 width/ height
+	       
+	     가시 속성
+	     display => 화면 출력 형식
+	                  System.out.println() => block
+	                  System.out.print()   => inline
+	       => block 속성을 가지고 있는 태그 
+	          <div> <h1~h6> <p> <br> <hr> <ul> <ol> <dl> <table>
+	       => inline 속성을 가지고 있는 태그 
+	          <img> <input> <select> <textarea> <span> <a> 
+		   => 태그를 숨기는 경우 : display:none
+		   => 테이블 대신 (대체) 
+		      display:table        => <table>
+			  display:table-row    => <tr>
+  		      display:table-cell   => <td>
+		      display:table-column => <th>
+	    글자 관련 속성
+	     1. 글자
+	        font-size : 크기 (px,em(배수)) => 기본 크기 14px
+	        font-family : 글꼴 지정 
+	        font-weight : bold, i
+	        웹 폰트 사용이 가능 (구글 폰트)
+	        color : 글자 색상 
+	     2. 스타일 
+	        text-decoration : none|underline|overline|line-through(취소선)
+	        text-align => left|center|right
+	        white-space: 줄바꿈. 공백
+	        linr=height 
+	        word-spacing:텍스트 간격
+	     3. 배경
+	        backgrond-color : 배경색
+	        backgrond-image : 배경이미지
+	        backgrond-repeat 
+	        backgrond-size : width/height=> 출력 위치
+	     => 위치
+	        satic: 기본 defualt => 코딩 순서
+	        absolute : 절대 좌표 => top/left/right/bottom => 브라우저 위치
+	        relative : 상대 자표 => 태그의 좌표 참조
+	        fixed : 고정 좌표
+	        float : 위치 이동 ==> left / right => 해제 clear
+	        z-index : 레이어 (원하는 이미지 태그를 선택해서 보여준다) => 숫자가 높을 수록 위로 올라온다
+	        overflow : 지정된 위치를 벗어나는 경우에 처리
+	                   1) hidden 숨긴다 2) scroll 이용
+	                     ======== card 제작 시에 글자 범위를 벗어나는 경우에 주로 사용
+	                     => overflow-y, overflow-x  
+	 
+	 
+	
+	ul => list-style
+	== 메뉴 제작
+	== Card에서 주로 사용하는 태그 
+	== first-child, last-child, nth-child()
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	ul{
+		overflow: hidden;
+	}
+	li{
+		list-style: none;
+		float: left;
+		padding: 20px;
+	}
+	li:first-child{
+		border-radius: 10px 0px 0px 10px;
+	}
+	li:last-child{
+		border-radius: 0px 10px 10px 0px;
+	}
+	li:nth-child(2n){
+		background-color: rgb(255, 153, 181);
+	}
+	li:nth-child(2n+1){
+		background-color: rgb(148, 222, 180);
+	}
+	li:hover{
+		cursor: pointer;
+		color: white;
+	}
+	span{
+		width: 100px;
+		height: 100px;
+		display: block;
+		float: left;
+		padding: 20px;
+	}
+	.danger{
+		border: 1px solid firebrick;
+		background-color: firebrick;
+		border-radius: 20px;
+	}
+	.info{
+		border: 1px solid deepskyblue;
+		background-color: deepskyblue;
+		border-radius: 20px;
+	}
+	.success{
+		border: 1px solid forestgreen;
+		background-color: forestgreen;
+		border-radius: 20px;
+	}
+	.warning{
+		border: 1px solid darkorange;
+		background-color: darkorange;
+		border-radius: 20px;
+	}
+	.primary{
+		border: 1px solid midnightblue;
+		background-color: midnightblue;
+		border-radius: 20px;
+	}
+</style>
+</head>
+<body>
+	<ul>
+		<li>홈</li>
+		<li>회원가입</li>
+		<li>영화예매</li>
+		<li>맛집추천</li>
+		<li>여행코스</li>
+		<li>커뮤니티</li>
+		<li>마이페이지</li>
+	</ul>
+	<hr>
+	<span class="danger"></span>
+	<span class="info"></span>
+	<span class="success"></span>
+	<span class="warning"></span>
+	<span class="primary"></span>
+</body>
+</html>
