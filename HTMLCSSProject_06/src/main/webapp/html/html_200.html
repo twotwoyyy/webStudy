@@ -1,0 +1,57 @@
+<!--
+	지정된 영역을 벗어나는 경우 
+	=> hidden / scroll 
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	body > div{
+		width: 400px;
+		height: 100px;
+		position: relative;
+		border: 2px solid black;
+		/*overflow: hidden;*/
+		overflow-y: scroll;
+	}
+	.d{
+		width: 100px;
+		height: 100px;
+		position: absolute;
+	}
+	.a{
+		background-color: red;
+		left: 10px;
+		top:10px;
+		z-index: 100;
+	}
+	.b{
+		background-color: green;
+		left: 50px;
+		top:50px;
+		z-index:10
+	}
+	.c{
+		background-color: blue;
+		left: 90px;
+		top:90px;
+		z-index: 1;
+	}
+</style>
+</head>
+<body>
+  <h1>
+	 '연봉 31등' 손흥민 재계약 NO, 토트넘 웃는다 
+  </h1>
+  <div>
+	  <div class="a d"></div>
+	  <div class="b d"></div>
+	  <div class="c d"></div>
+   </div>
+  <h1>
+	 음바페, 자책골 넣은 베르통언 조롱... 팬들은 음바페
+  </h1>
+</body>
+</html>
