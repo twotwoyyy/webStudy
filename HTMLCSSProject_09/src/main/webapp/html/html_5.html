@@ -1,0 +1,95 @@
+<!--
+	반응형 웹
+	해상도에 따라 태그의 크기를 변경 
+	=> 모바일 / pc
+	=> 화면 크기 자동 조절
+	=> @media screen and (max-width:960px) 768px 640px 800px
+	=> 반응형 웹 => 부트스트림 (CSS 라이브러리)
+	
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	body{
+		background: lightskyblue;
+	}
+	.container{
+		width: 100%;
+		margin:0px auto;
+		border: 1px solid gray;
+	}
+	header{
+		width: 100%;
+		height: 100px;
+		background-color: lemonchiffon;
+	}
+	aside{
+		float: left;
+		width: 30%;
+		height: 600px;
+		background-color: lightpink;
+	}
+	.article1{
+		float: left;
+		width: 70%;
+		height: 200px;
+		background-color: palevioletred;
+	}
+	.article2{
+		float: left;
+		width: 70%;
+		height: 200px;
+		background-color: mediumseagreen;
+	}
+	.article3{
+		float: left;
+		width: 70%;
+		height: 200px;
+		background-color: cornflowerblue;
+	}
+	footer{
+		clear: both;
+		width: 100%;
+		height: 100px;
+		background-color: sandybrown;
+	}
+
+	@media screen and (max-width:960px){
+		.container{width: 100%;}
+		.article1{height: 300px;}
+		.article2{height: 300px;}
+		.article3{height: 300px;}
+	}
+
+	@media screen and (max-width:768px){
+		aside{width: 100%; height: 300px;}
+		.article1{height: 50%;}
+		.article2{height: 50%;}
+		.article3{height: 50%;}
+	}
+
+	@media screen and (max-width:480px){
+		.article1{height: 100%;}
+		.article2{height: 100%;}
+	}
+	
+</style>
+</head>
+<body>
+	<div class="container">
+		<header></header>
+		<aside></aside>
+		<section class="article1"></section>
+		<section class="article2"></section>
+		<section class="article3"></section>
+		<footer></footer>
+	</div>
+</body>
+</html>
