@@ -1,0 +1,65 @@
+<!--
+	
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style>
+	.container{
+		width: 960px; 
+		height: 768px;
+		border: 1px solid red; /*여백*/
+		margin-top: 50px;
+	}
+	.container-fluid{
+		height: 768px;
+		border: 1px solid blue; /*풀화면*/
+	}
+	.row{
+		background-color: dodgerblue;
+		border: 1px solid black;
+		height: 300px;
+	}
+	/*
+	  화면 분할
+	   col-sm-8
+	   
+	   lg
+	   sm
+	   md
+	   xs
+	   등분 ==> 12개 
+	   
+	   https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_table_basic&stacked=h
+	   
+	*/
+	.col-sm-6{
+		border: 1px solid white;
+		height: 300px;
+	}
+	.col-sm-4{
+		border: 1px solid white;
+		height: 300px;
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			
+		</div>
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4"></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6"></div>
+			<div class="col-sm-6"></div>
+		</div>
+	</div>
+</body>
+</html>
