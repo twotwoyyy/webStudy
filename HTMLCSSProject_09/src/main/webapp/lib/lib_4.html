@@ -1,0 +1,66 @@
+<!--
+	table / button
+	table 
+	 = table-hover
+	   => tr에 마우스 오버 : 색상 
+	 = table-bordered
+	   => 테두리 출력
+ 	 = table-striped
+	   => 한 줄씩 색상이 다르다 
+	 => 정렬
+	    text-left / text-center / text=right
+	button : 모든 태그를 버튼 형식으로 바꾸기 가능
+	  |
+	 btn : 버튼 형태
+	 btn-sm : 버튼 크기 (lg,sm, xs)
+	 btn-primary btn-success btn-danger btn-werning btn-info btn-default
+	    blue        green        red        주황        cyan     gray
+	 
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+.container {
+	margin-top: 50px;
+}
+
+.row {
+	margin: 0px auto;
+	width: 960px;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<input type="button" value="한식" class="btn-lg btn-danger">
+			<input type="button" value="중식" class="btn-lg btn-success">
+			<input type="button" value="일식" class="btn-lg btn-warning">
+			<input type="button" value="양식" class="btn-lg btn-info">
+			<input type="button" value="분식" class="btn-lg btn-primary">
+			<input type="button" value="기타" class="btn-lg btn-default">
+		</div>
+		<div class="row">
+			<input type="button" value="한식" class="btn-sm btn-danger">
+			<input type="button" value="중식" class="btn-sm btn-success">
+			<input type="button" value="일식" class="btn-sm btn-warning">
+			<input type="button" value="양식" class="btn-sm btn-info">
+			<input type="button" value="분식" class="btn-sm btn-primary">
+			<input type="button" value="기타" class="btn-sm btn-default">
+		</div>
+		<div class="row">
+			<input type="button" value="한식" class="btn-xs btn-danger">
+			<input type="button" value="중식" class="btn-xs btn-success">
+			<input type="button" value="일식" class="btn-xs btn-warning">
+			<input type="button" value="양식" class="btn-xs btn-info">
+			<input type="button" value="분식" class="btn-xs btn-primary">
+			<input type="button" value="기타" class="btn-xs btn-default">
+		</div>
+	</div>
+</body>
+</html>
