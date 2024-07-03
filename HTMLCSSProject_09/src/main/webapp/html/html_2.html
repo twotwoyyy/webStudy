@@ -1,0 +1,61 @@
+<!--
+	position : ralative, absolute 차이점	
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.container{
+		width: 300px; 
+		height: 300px;
+		border: 1px solid #CCC;
+		position: relative;/*absolute가 브라우저 기준이라 반드시 relative로 참고할 수 있도록 지정*/
+		/* div.container안에 있는 좌표를 이용해라*/
+	}
+	.box{
+		width: 50px; 
+		height: 50px;
+		background-color: skyblue;
+		position: absolute;
+	}
+	.a{
+		top: 0;
+		left: 0;
+		
+	}
+	.b{
+		top: 0;
+		right: 0;
+	}
+	.c{
+		bottom: 0;
+		left: 0;
+	}
+	.d{
+		bottom: 0;
+		right: 0;
+	}
+	.e{
+		top: 100px;
+		left: 100px;
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box a"></div> <!--class : 공통으로 적용되는 CSS가 존재한다는 것-->
+		<div class="box b"></div> <!--class는 이름 여러 개 사용 가능 id는 이름 한개만 사용-->
+		<!--
+			<div class="a" class="b" class="c"></div> => 적용할 수 없다 
+			 => 한 개의 태그에 같은 속성을 사용할 수 없다 
+			 자바로 따지면 태그를 클래스로, 속성을 멤버변수로 보는 것 
+			 => <div class="a b c" 만 가능
+		-->
+		<div class="box c"></div>
+		<div class="box d"></div>
+		<div class="box e"></div>
+	</div>
+</body>
+</html>
