@@ -1,0 +1,181 @@
+<!--
+	CSS
+	 1) 텍스트 관련 스타일
+	    font-family : 글꼴 변경
+	    font-family : 글꼴, 글꼴...
+	    시스템에 내장, @import('') => 외부에서 읽어오는 경우 
+	    font-size : 단위 => px, em(배수)
+	    font-weight : 강조 (bold)
+	    color : 글자 색상
+	    text-decoration : none | underline | overline | line-through
+	    =============== <a> 변경 
+		text-transform : none | uppercase | lowercase (사용빈도는 낮다) => 로고
+		white-space : pre-wrap (자동 줄바꿈)
+		word-spacing : 글자 간격
+		text-align : left | right | center
+		=> color
+		   1) 지정된 색상 tomato..
+		   2) rgb(red,green,blue) => 255 초과 불가
+		   3) rgba(red,green,blue,alpha) => alpha 투명 모드 : 0.0~1.0 (opacity:)
+	 2) background : 배경 이미지/ 배경 색상
+	    background-color
+	    background-image:url('경로명')
+	    ================ 그림이 작은 경우 => 반복한다 => no-repeat (반복제거)
+	    background-size : width값, height값 => cover 
+	    background : 통합해서 사용 가능 
+	 3) 목록 
+	    list-style-type:none (desc|cycle) => ul/ol 태그에 처리
+	    => 메뉴 제작  
+	 4) 가시성
+	    display:none(숨김) => block|inline|inline-block(width,height)
+	    => display:table|table-row(tr)|table-cell(td)
+	 5) 여백
+	    태그밖 : margin
+	           margin-left
+	           margin-right
+	           margin-top
+	           margin-bottom
+	           ============== 태그와 태그 사이의 여백, 브라우저와 태그 사이
+	           margin: top, right, bottom, left 
+	    태그안 : padding
+	           padding-left
+	           padding-right
+	           padding-top
+	           padding-bottom
+	           =============== 태그 안에 문자, 이미지 여백
+	           padding : top, right, bottom, left
+	           
+	    테두리 : border 
+	           border-style : 선의 종류 (solid,dotted,dashed,double)
+	           border-width : 두께 
+	           border-color : 색상
+	           border: 두께 스타일 색상 => 순서는 상관 없다
+	           border-collapse : 통합
+	           border-radious : 둥근 선  
+	    위치 이동 속성 : float:(left,right) => block 속성
+	                 ================== div (화면 분할)
+	                 ================== li (메뉴 => 옆으로 출력)
+	                 float 해제 => clear:both (통합)
+	    배치  : static : dafault, 코딩 순서로 배치 
+	           relative : 상대 좌표 => div로 전체 출력화면 설정
+	           absolute : 절대 좌표 => 브라우저 좌표 (top, bottom, left, right)
+	           fixed    : 고정 좌표 => 퀵메뉴, 방문지..
+	           z-index  : 레이어, 숫자가 가장 높은 태그를 화면 제일 위에 출력 => 실시간 채팅..
+	    기타  :
+	           overflow : hidden, scroll
+	           overflow-y, overflow-x 
+	          
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#wrapper{
+		border: 5px solid salmon;
+		width: 500px;
+		margin-left: 150px;
+		border-radius: 10px;
+	}
+	#joinForm{
+		display: table;
+		margin: 10px auto;
+		border-collapse: collapse;
+	}
+	#joinForm h1{
+		display: table-caption;
+		font-size: 15px;
+		padding: 5px;
+		margin-bottom: 10px;
+		width: 450px;
+	} 
+	#joinForm h1 span{
+		text-align: center;
+		display: block;
+		color: #FFF;
+		background-color: #333;
+		padding: 5px;
+		margin: 0px auto;
+	}
+	#joinForm p{
+		display: table-row; /*<tr>*/
+		padding: 5px;
+		border-bottom: 1px solid #6b6b6b;
+	}
+	#joinForm label{
+		display: table-cell; /*<td>*/
+		padding-left: 10px;
+	}
+	#joinForm #id{
+		width: 100px;
+	}
+	#joinForm #pwd{
+		width: 100px;
+	}
+	#joinForm #name{
+		width: 100px;
+	}
+	#joinForm .cellStyle{
+		display: table-cell;
+		padding-left: 5px;
+	}
+	/*
+	    form => table
+	    h1 => caption
+	    p => tr
+	    label => table-cell (td)
+	    
+	    <table> = display:table
+		<tr> = display:table-row
+		<td> = display:table-cell
+	    <th> = display:table-column
+		<caption> = display:table-caption 
+			 display: block, inline, inline-block, none 
+	*/
+</style>
+</head>
+<body>
+<!--
+	bootstrap : 전체 영역 => container : 960px, container-fiuld > full
+-->
+	<div id="wrapper">
+		<!--
+			form : 전송할 데이터를 모아서 한번에 서버로 전송
+			 = mathod : 전송 방식 (RestFul)-면접
+			            GET  : URL뒤에 데이터를 첨부해서 전송 http~~/폴더명/파일명?변수=값(여러개는 &변수=값)
+			                   HTML/JavaScript/Java에서 화면이동 => 필요시 데이터 전송 <a>는 GET방식만 가능
+							   *화면 이동 
+							     html : <form>,<a> => <a>는 GET만 가능, <form>은 GET/POST
+							     JavaScript : location.href="이돌할 파일명?변수=값"
+							     Java : sendRedirect("이동할 파일?변수=값")
+						     => GET은 URL 뒤에 첨부하기 때문에 데이터 노출 위험이 있다 (보안 취약)
+						        ex) page,단순한 검색어
+						     => method를 사용하지 않는 경우 GET(default)
+			            POST : 내부 네트워크를 통해서 데이터를 전송 => 데이터 노출 없다 (보안 강함)
+			                 => 전송할 데이터가 많거나 보안 유지가 필요할 떄 사용 
+			                    ex)글쓰기, 회원가입, 회원수정..
+			            ====================================================================
+			            GET:검색, POST:TNSERT, FUT:UPDATE, DELETE:DELETE
+			 = action : 데이터를 받는 파일 저장
+			 = input 태그
+		-->
+		<form id="joinForm">
+			<h1><span>회원가입</span></h1>
+			<p><!--p태그가 tr로 쓰임-->
+				<label for="id">ID</label><!--th-->
+				<input type="text" id="id" class="cellStyle"><!--td-->
+			</p>
+			<p>
+				<label for="pwd">Password</label>
+				<input type="password" id="pwd" class="cellStyle">
+			</p>
+			<p>
+				<label for="name">Name</label>
+				<input type="text" id="name" class="cellStyle">
+			</p>
+		</form>
+	</div>
+</body>
+</html>
