@@ -1,0 +1,176 @@
+<!--
+	=> 순서 (알고리즘)
+	=> 흐름 파악 => 요청  /  응답 
+	            ======  =====
+	            브라우저  서버(DAO)
+	=> 분석 : 라이브러리 => 개발에 맞는지 (맞지 않으면 오버라이딩)
+	=> 자바 (객체 지향 프로그램=> 3대 특성) 
+	1. 태그 + 속성
+	   텍스트 관련
+	     => <font> : 색상 지정, 크기, 글꼴 => CSS로 변경
+			 => <font color="" size="" face="">
+		 => <u> : underline
+		 => <em> : 강조체
+		 => <strong> : 강조체
+		 => <b> : 굵은체
+		 => <h1~h6> : 제목 => block+bold
+		 => <sup> : 윗첨자 => 새글 (new)
+		 => <p> : 단락 
+		 => <br> : 줄바꿈
+		 => <pre> : 입력된 상태 그대로 출력 : 내용 출력, 줄거리 출력
+	   멀티미디어 관련
+	     => <img>
+	         => 속성 src="파일명", width/height, title="풍선 도움말"
+	     => <embed> 
+	         => 동영상 출력
+	         => src="동영상 파일"
+	         => width/height
+	   화면 이동 
+	     => <a> : GET 방식만 사용이 가능 
+			=> 속성 
+			   href="이동할 파일명" => 데이터 전송시 => 파일명?변수=값
+			                                    ==========
+			                                    ?앞에 있는 파일에서 값을 받는다 
+			   terget="_self"(현재 화면에 출력),"_blank"(새로운 창에 출력)
+	   목록 출력
+	     => <ul> 
+			 반드시 <li>와 동반 => 실제 출력하는 데이터
+			 메뉴 만들 때 주로 쓴다 => style="list-type:none" 
+		 => <table> 
+			 제목이 있는 목록 출력 ex) 장바구니, 게시판
+			 반드시 <tr>-<th>(제목) | <td>(실제 데이터)와 동반
+			 속성 : width|height|align(가로)|valign(세로)	        
+			                   ====== left,center,right
+			                          ===== default
+		 => <ol>
+			 반드시 <li>와 동반 => 실제 출력하는 데이터
+		 => <dl>
+			 <dt>(타이틀), <dd>(설명) 동반
+			 상베보기 화면에서 주로 사용
+	   입력 관련
+	     =================
+	     => <input> : "사용자 입력값"을 받는다
+	         type="" 
+	          type="text"     : 한줄 문자열
+	          type="password" : 비밀번호 입력창
+	          type="radio"    : 라디오 버튼
+	          type="checkbox" : 멀티 선택 
+	          type="number"   : 숫자 표시(Spinner)
+	          type="range"    : Slider bar
+	          type="file"     : 파일 첨부 => 자료실(파일 업로드|다운로드)
+	          type="date"     : 날짜 관련 => 생년월일 
+	          type="color"    : 색상 관련
+	          type="button"   : 버튼 관련 => 기능 없음 => 반드시 자바스크립트에서 처리
+	          type="submit"   : 데이터 전송 => <form>을 이용
+			  type="image"    : submit 버튼
+	         value="" 
+	         size="" 
+	     => <select> 
+			 콤보박스, 반드시 <option>과 동반 => 데이터 저장
+			 사용법 <option selected value=""> 
+		 => <textarea>
+			 <textarea></textarea> 공백 주면 안된다
+	     ================= <form> : 입력된 데이터를 모아서 해당 파일에 전송 (GET/POST)
+		 => <button>
+			 데이터 전송버튼 (submit)
+	   화면 분할
+	     => <div> : 화면 분할
+		 => <span> : 부분적으로 CSS를 적용, 부메뉴
+	   =========================================================================
+	     block 속성  : <p>,<br>,<div>,<ul>,<table>,<h1>~<h6>
+		 inline 속성 : <b>,<input>,<textarea>,<select>,<font관련>... 
+				
+	2. CSS
+	   선택자 => 디자인 할 태그를 선택, 이벤트 처리, Jsoup (크롤링)
+	     * : 전체 선택자 => margin/padding/font-family
+	     태그명, 구분자(id,class)
+	     #아이디명
+	     .클래스명 
+	     속성 선택자
+	       태그명[속성명=값]  : equals
+	       태그명[속성명^=값] : startsWith
+	       태그명[속성명$=값] : endsWith
+	       태그명[속성명*=값] : contains
+	     자손,후손,동위 선택자
+	            div
+	             |
+	       ==============
+	       |     |      |
+	       p     h1   span (자손) 
+	                    |
+	                   h1 (후손)
+	       자손 선택자 div > span
+	       후손 선택자 div span h1
+	       동위 선택자 h1+span (바로 옆 태그)/ h1~span (옆에 있는 모든 태그) 
+	                (th+td) => 구분하지 않아 동위 선택자 자주 사용 
+	     상태 선택자 : <input>
+	       태그 (id/class) : checked => type=radio, type=checkbox
+	       :focus => type=text, type=button 
+	       :enabled | disabled => type=text, type=button 
+	     구조 선택자
+	       :first-child 
+	       :last-child
+	       :nth-child(수열)
+	       :nth-last-child(수열)
+	     문자 선택자
+	       ::before => new, 특가...
+	       ::after 
+	   속성
+	     텍스트 관련 속성
+	       font-family     : 글꼴
+	       font-size       : 글자 크기 (px|em) 
+	       font-weight     : bold
+	       color           : 글자 색상
+	       text-align      : 글자 정렬
+	       text-decoration : 라인선 (none|underline|overline)
+	       white-space     : wrap 줄바꿈 
+	       word-spacing    : 글자 간격
+	       line-height     : 줄 간격
+	     리스트 관련 속성
+	       list-style  
+	     background
+	       background-image:url('파일명') => repeat가 default => 해제: no-repeat
+	       background-size : width, height | cover (자동 축소,확대)
+	       background-color
+	     border
+	       border-width : 두께 
+	       border-style : 선의 종류 (solid|dotted|dashed|double..)
+	       border-color 
+	       border       : 순서 상관없이 두께, 선의 종류, color 모두 적용 가능
+	     display
+	       none|block|inline|inline-block (width,height지정시)
+	     margin
+	       태그와 태그 사이 여백 
+	       margin-left, margin-right, margin-top, margin-bottom 
+	       순서 : top right bottom left (시계방향)
+	     padding
+	       태그 안에 글자, 이미지에 대한 여백 
+	       padding-left, padding-right, padding-top, padding-bottom 
+	     position
+	       static   : 코딩 순서대로 배치(default)
+	       absolute : 절대 좌표 => 브라우저 좌표 사용
+	       relative : 상대 좌표 => 지정 태그의 위치 좌표 (top/left/right/bottom)
+	       fixed    : 고정 좌표
+	     기타
+	       z-index : 레이어, 숫자가 높을 수록 우선 순위 (위에 배치)
+	       float   : left, right, 반드시 해제 => clear:both => 통합
+	       
+	   반응형 웹
+	       @media screen and (max-width:960)
+	       {
+			   => 해상도에 따라 크기 변경이 가능 => 반응형 웹
+			   => 모바일에서도 사용이 가능하도록
+			   => 최근에는 앱을 만들어 처리 
+		   }
+	   
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
