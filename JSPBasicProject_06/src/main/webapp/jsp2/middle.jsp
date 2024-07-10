@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%
 	String type=request.getParameter("type");
-	int i=Integer.parseInt(type);
+	int i=Integer.parseInt(type); 
 	if(i==1){
 		response.sendRedirect("redirect.jsp");
 	}else{
