@@ -12,7 +12,7 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Include</a>
-    </div>
+    </div> 
     <ul class="nav navbar-nav">
       <li class="active"><a href="action_include.jsp">Home</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">회원 <span class="caret"></span></a>

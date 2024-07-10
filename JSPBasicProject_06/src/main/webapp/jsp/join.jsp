@@ -10,5 +10,5 @@
 	<div class="row">
 		<h1 class="text-center">회원가입</h1>
 	</div>
-</body>
-</html>
+</body> 
+</html> 

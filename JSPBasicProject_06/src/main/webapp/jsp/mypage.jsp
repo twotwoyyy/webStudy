@@ -11,4 +11,4 @@
 		<h1 class="text-center">마이페이지</h1>
 	</div>
 </body>
-</html>
+</html> 

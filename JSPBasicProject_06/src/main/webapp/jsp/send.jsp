@@ -9,12 +9,12 @@
 .row1{
 	margin: 0px auto;
 	width: 500px; 
-}
+} 
 </style>
 </head>
 <body>
 	<div class="row row1">
-		<h1 class="text-center">개인정보 전송</h1>
+		<h1 class="text-center">개인정보 전송</h1> 
 		<form method="post" action="action_include.jsp?mode=6">
 			<table class="table">
 				<tr>

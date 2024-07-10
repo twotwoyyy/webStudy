@@ -37,7 +37,7 @@
 	    <jsp:forward page="파일명">
 	      서버에서 화면을 이동할 경우에 사용 
 	      = sendRedirect() : URL을 변경 => request가 초기화
-	      = forward() : URL 변경이 없다  => request를 계속 가지고 있다 (초기화x) => MVC
+	      = forward() : URL 변경이 없다  => request를 계속 가지고 있다 (초기화x) => MVC 
  --%>
 <%
 	request.setCharacterEncoding("UTF-8");

@@ -12,7 +12,7 @@
 	vo.setAddress(address);
 	vo.setSex(sex);
 	vo.setPhone(phone);
---%>
+--%> 
 <jsp:useBean id="vo" class="com.sist.bean.MemberVO">
 	<jsp:setProperty name="vo" property="*"/>
 </jsp:useBean>

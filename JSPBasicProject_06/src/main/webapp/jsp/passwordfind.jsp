@@ -11,4 +11,4 @@
 		<h1 class="text-center">비밀번호 찾기</h1>
 	</div>
 </body>
-</html>
+</html> 
