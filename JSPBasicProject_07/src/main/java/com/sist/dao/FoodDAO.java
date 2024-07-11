@@ -65,4 +65,40 @@ public class FoodDAO {
 		}
 		return total;
 	}
+	
+	// 상세보기
+	/*
+	 * 	private int fno;
+		private String name,type,phone,address,theme,poster,content;
+		private double score;
+	 */
+	// 맛집 한 개라서 VO
+	public FoodVO foodDetailData(int fno) {
+		FoodVO vo=new FoodVO();
+		try {
+			conn=dbConn.getConnection();
+			String sql="SELECT name,type,phone,address,theme,poster,content,score,fno "
+					  +"FROM food_house "
+					  +"WHERE fno="+fno;
+			ps=conn.prepareStatement(sql);
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			vo.setName(rs.getString(1));
+			vo.setType(rs.getString(2));
+			vo.setPhone(rs.getString(3));
+			vo.setAddress(rs.getString(4));
+			vo.setTheme(rs.getString(5));
+			vo.setPoster(rs.getString(6).replace("https", "http"));
+			vo.setContent(rs.getString(7));
+			vo.setScore(rs.getDouble(8));
+			vo.setFno(rs.getInt(9));
+			rs.close();
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			dbConn.disConnection(conn, ps);
+		}
+		return vo;
+	}
 }

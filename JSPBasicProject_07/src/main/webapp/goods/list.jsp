@@ -22,7 +22,7 @@
 		for(GoodsVO vo:list){
 	%>
 		<div class="col-sm-3">
-			<a href="#">
+			<a href="../main/main.jsp?no=<%=vo.getNo()%>&mode=3">
 				<div class="thumbnail">
 					<img src="<%=vo.getPoster() %>" style="width:240px; height:200px">
 					<p class="a"><%=vo.getName() %></p>

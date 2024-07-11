@@ -67,4 +67,36 @@ public class GoodsDAO {
 		}
 		return total;
 	}
+	//상세보기
+	public GoodsVO goodsDetailData(int no) {
+		GoodsVO vo=new GoodsVO();
+		try {
+			conn=dbConn.getConnection();
+			String sql="SELECT no,goods_poster,goods_name,goods_price,goods_sub,goods_delivery,goods_discount,goods_first_price "
+					  +"FROM goods_all "
+					  +"WHERE no=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, no);
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			vo.setNo(rs.getInt(1));
+			vo.setPoster(rs.getString(2));
+			vo.setName(rs.getString(3));
+			String price=rs.getString(4);
+			vo.setPrice(price);
+			vo.setSub(rs.getString(5));
+			vo.setDelivery(rs.getString(6));
+			vo.setDiscount(rs.getInt(7));
+			String rp=price.replaceAll("[^0-9]", "");
+			vo.setRprice(Integer.parseInt(rp));
+			vo.setFirst_price(rs.getString(8));
+			rs.close();
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			dbConn.disConnection(conn, ps);
+		}
+		return vo;
+	}
+	
 }

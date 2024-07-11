@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class GoodsVO {
-	private int no,discount,hit;
-	private String name,sub,first_price,delivery,poster;
+	private int no,discount,hit,rprice;
+	private String name,price,sub,first_price,delivery,poster;
 }

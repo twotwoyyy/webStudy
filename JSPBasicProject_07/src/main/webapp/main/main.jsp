@@ -25,7 +25,8 @@
 	width: 960px;
 }
 .a{
-	white-space: nowrap;
+	white-space: nowrap;  
+	
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
