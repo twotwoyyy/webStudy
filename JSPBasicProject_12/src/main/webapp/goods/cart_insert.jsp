@@ -7,7 +7,7 @@
 		list=new ArrayList<CartVO>();
 	
 	String id=(String)session.getAttribute("id");
-
+	
 	request.setCharacterEncoding("UTF-8");
 	String name=request.getParameter("name");
 	String poster=request.getParameter("poster");
