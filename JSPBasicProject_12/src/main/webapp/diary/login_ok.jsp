@@ -34,6 +34,6 @@
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("sex", vo.getSex());
 		// 달력(diary)으로 이동
-		response.sendRedirect("diary.jsp");
+		response.sendRedirect("middle.jsp");
 	}
 %>
