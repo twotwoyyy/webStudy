@@ -30,7 +30,7 @@ h3{
 							<th width="20%" class="text-right">ID</th>
 							<td width="80%">
 								<input type="text" name="id" class="input-sm" size="20" required>
-							</td>
+							</td> 
 						</tr>
 						<tr>
 							<th width="20%" class="text-right">Password</th>
