@@ -24,7 +24,7 @@ h3{
 		<div class="row">
 			<div class="text-center">
 				<a href="diary.jsp" class="btn btn-lg btn-danger">일정관리</a>
-				<a href="#" class="btn btn-lg btn-primary">상품관리</a>
+				<a href="../goods/goods_list.jsp" class="btn btn-lg btn-primary">상품관리</a>
 			</div>
 		</div>
 	</div>
