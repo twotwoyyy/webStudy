@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style>
 .container{
-	margin-top: 260px;
+	margin-top: 260px; 
 }
 .row{
 	margin: 0px auto;
