@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%--
 	20장
 	EL : 표현식 => 데이터를 화면에 출력 
@@ -7,7 +6,7 @@
 	    ${값}
 	    => 연산자
 	    => 내장 객체 
- --%>
+ --%> 
 <!DOCTYPE html>
 <html>
 <head>
