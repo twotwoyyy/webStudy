@@ -24,7 +24,7 @@ public class BoardDAO {
 		   dao=new BoardDAO();
 	   return dao;
    }
-   
+    
    // Connection 주소 얻기 
    public void getConnection()
    {
