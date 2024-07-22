@@ -20,7 +20,7 @@ public class BoardDAO {
    
    public static BoardDAO newInstance()
    {
-	   if(dao==null)
+	   if(dao==null) 
 		   dao=new BoardDAO();
 	   return dao;
    }
