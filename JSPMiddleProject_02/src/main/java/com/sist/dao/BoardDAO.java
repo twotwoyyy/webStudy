@@ -16,7 +16,7 @@ import javax.naming.*;
 public class BoardDAO {
    private Connection conn;
    private PreparedStatement ps;
-   private static BoardDAO dao;
+   private static BoardDAO dao; 
    
    public static BoardDAO newInstance()
    {
