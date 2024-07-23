@@ -16,6 +16,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%-- 
 	<h3>Java : 날짜 출력</h3>
 	<%= date %><br>
 	<%= new SimpleDateFormat("yyyy-MM-dd").format(date) %>
@@ -31,5 +32,6 @@
 	<h3>JSTL : 숫자 변환</h3>
 	${1234567 }<br>
 	<fmt:formatNumber value="${1234567}" type="currency"/>
+	--%>
 </body> 
 </html>
