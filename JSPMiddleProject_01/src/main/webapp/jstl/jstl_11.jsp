@@ -14,7 +14,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
+</head> 
 <body>
 <%-- 
 	<h3>Java : 날짜 출력</h3>
