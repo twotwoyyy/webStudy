@@ -82,8 +82,17 @@
       </ul>
     </div>
     <h2 class="sectiontitle">최근 방문 맛집</h2>
-    <ul class="nospace group">
-    </ul>
+   <div class="flexslider carousel basiccarousel btmspace-80">
+      <ul class="slides">
+      <c:forEach var="vo" items="${cList }">
+	        <li>
+	          <figure><img class="radius-10 btmspace-10" src="${vo.poster }" style="width:320px; height:185px">
+	            <figcaption style="white-space: no-wrap; overflow: hidden; text-overflow: ellipsis;"><a href="#">${vo.name }</a></figcaption>
+	          </figure>
+	        </li>
+        </c:forEach>
+      </ul>
+    </div>
     <div class="clear"></div>
   </main>
 </div>
