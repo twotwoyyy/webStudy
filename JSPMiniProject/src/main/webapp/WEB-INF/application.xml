@@ -3,4 +3,6 @@
 	<bean id="main" class="com.sist.model.MainModel"/>
 	<bean id="main" class="com.sist.model.FoodModel"/>
 	<bean id="main" class="com.sist.model.SeoulModel"/>
+	<bean id="main" class="com.sist.model.BoardModel"/>
+	
 </beans>
