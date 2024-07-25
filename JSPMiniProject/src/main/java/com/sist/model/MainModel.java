@@ -6,6 +6,7 @@ import java.util.*;
 import com.sist.dao.*;
 import com.sist.vo.*;
 import com.sist.controller.*;
+
 public class MainModel {
 	@RequestMapping("main/main.do")
 	public String main_page(HttpServletRequest request, HttpServletResponse response) {
