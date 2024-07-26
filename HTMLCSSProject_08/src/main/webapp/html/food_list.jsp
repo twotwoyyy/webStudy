@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.*, com.sist.dao.*"%>
+	pageEncoding="UTF-8" import="java.util.*,com.sist.dao.*"%>
 <%
 /*
    1. 사용자로부터 요청값 받기 => request.getParameter()

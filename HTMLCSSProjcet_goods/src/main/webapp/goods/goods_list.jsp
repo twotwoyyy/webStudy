@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, com.sist.dao.*"%>
+    pageEncoding="UTF-8" import="java.util.*,com.sist.dao.*"%>
 <%
 request.setCharacterEncoding("UTF-8"); //reauest.getParameter() 전에 설정 한글 변환 코드 
 String name = request.getParameter("name"); 

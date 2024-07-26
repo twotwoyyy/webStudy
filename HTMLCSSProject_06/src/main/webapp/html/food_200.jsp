@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.*, com.sist.dao.*"%>
+	pageEncoding="UTF-8" import="java.util.*,com.sist.dao.*"%>
 <%
 FoodDAO dao=FoodDAO.newInstance();
 List<FoodVO> list = dao.foodListData();
