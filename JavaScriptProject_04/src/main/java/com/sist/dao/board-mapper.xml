@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.sist.dao.board-mapper">
+ 	<!-- 목록 출력 <select>  -->
+ 	<!-- 
+ 		매개변수 : 2개 이상 => 설정은 1개만 가능 => 2개 이상시 모아서 전송 
+ 		        1. BoardVO
+ 		        2. BoardVO에 없는 데이터가 설정 
+ 		           start / end => Map
+ 		           
+ 		        UPDATE => BoardVO
+ 		        INSERT => BoardVO
+ 		        
+ 		        3. 검색
+ 		(1개 => 일반 데이터형) 
+ 		*** 동적 SQL : 다중 조건
+ 		Spring + MyBatis + Model => JSP
+ 		SpringBoot + JPA + Model => React/Vue
+ 		                            ========= MSA => CI/CD
+ 	 -->
+ 	<select id="boardListData" resultType="BoardVO" parameterType="hashmap">
+ 		SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,num
+ 		FROM (SELECT no,subject,name,regdate,hit,rownum as num 
+ 		FROM (SELECT /*+ INDEX_DESC(board board_no_pk) */no,subject,name,regdate,hit
+ 		FROM board))
+ 		WHERE num BETWEEN #{start} AND #{end}
+ 		<!-- 
+ 			map.put("start",1) => #{start} => map.get("start")
+ 			                                     ============== get메소드 안에 변수 값 가져올 때 
+ 			map.put("end",10) => #map의 key값과 같아야 한다 
+ 			=================
+ 			Map
+ 			#{start} = map.get("start")
+ 			VO
+ 			#{name} = vo.getName()
+ 			
+ 			#{name} => 문자일 경우 => 'vo.getName()'
+ 			table명, column명 => ${name} => $는 ''가 붙지 않는다 
+ 			
+ 		 --> 
+ 	</select>
+ 	<!-- 총 페이지  -->
+ 	<select id="boardRowCount" resultType="int">
+ 		SELECT COUNT(*) FROM board
+ 	</select>
+ 	<!-- 상세보기 출력 <select> -->
+ 	<!-- 글 추가 <insert> -->
+ 	<insert id="boardInsert" parameterType="BoardVO">
+ 		INSERT INTO board VALUES(
+ 			board_no_seq.nextval,#{name},#{subject},#{content},#{pwd},SYSDATE,0
+ 		)
+ 	</insert>
+ 	<update id="hitIncrement" parameterType="int">
+ 		UPDATE board SET 
+ 		hit=hit+1
+ 		WHERE no=#{no}
+ 	</update>
+ 	<select id="boardDetailData" resultType="BoardVO" parameterType="int">
+ 		SELECT no,name,subject,content,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit
+ 		FROM board
+ 		WHERE no=#{no}
+ 	</select>
+ 	<!-- 글 수정 <update> -->
+ 	<!-- 글 삭제 <delete> -->
+	<select id="boardGetPassword" resultType="string" parameterType="int">
+		SELECT pwd FROM board WHERE no=#{no}
+	</select> 	
+	<delete id="boardDelete" parameterType="int">
+		DELETE FROM board WHERE no=#{no}
+	</delete>
+ 	<!-- 태그 안에 sql문장은 1개만 실행: 두 개, <statement>, <sql>  -->
+ </mapper>
