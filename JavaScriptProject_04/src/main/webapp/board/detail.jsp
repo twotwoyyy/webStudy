@@ -12,7 +12,7 @@
 }
 .row {
     margin: 0px auto;
-    width: 800px;
+    width: 600px;
 }
 </style>
 <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script> <!-- 페이지를 바꾸지 않고 처리해준다 -->

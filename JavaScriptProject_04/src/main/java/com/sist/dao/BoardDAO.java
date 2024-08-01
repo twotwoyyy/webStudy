@@ -169,4 +169,26 @@ public class BoardDAO {
 		}
 		return vo;
 	}
+	
+	public static boolean boardUpdate(BoardVO vo) {
+		boolean bCheck=false;
+		SqlSession session=null;
+		try {
+				session=ssf.openSession();
+				String db_pwd=session.selectOne("boardGetPassword",vo.getNo());
+				if(db_pwd.equals(vo.getPwd())) {
+					bCheck=true;
+					session.update("boardUpdate",vo);
+					session.commit();
+				}else {
+					bCheck=false;
+				}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return bCheck;
+	}
 }
