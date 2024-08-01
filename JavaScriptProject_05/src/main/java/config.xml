@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MyBatis에 데이터베이스 정보를 전송해주는 역할 (Connection) -->
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+ <!-- 
+	 (properties?, settings?, typeAliases?, typeHandlers?, objectFactory?, objectWrapperFactory?, 
+	 reflectorFactory?, plugins?, environments?, databaseIdProvider?, mappers?) 
+	 xml은 반드시 지정된 순서로 태그나 속성을 지켜야 한다 => MyBatis
+	 => 속성값은 반드시 ""
+	 => 대소문자 구분 
+	 => 열고 닫는 태그가 명확해야 한다
+	 => 단점 : 파일이 다르기 때문에 개발자 부담 
+	          = 파일을 공유 => XML을 대체 (Annotation = 각자 개발)
+	 1. MyBatis : XML 버전 / Annotation 버전 (순수하게 자바만)
+	 2. Spring : XML 버전 / Annotation 버전 (순수하게 자바만)
+	             spring4   spring5
+	            
+  -->
+	<!-- properties 파일 읽기 -->
+  <properties resource="db.properties"/> 
+	<!-- VO를 등록, MyBatis에서 값을 저장 -->
+	<typeAliases>
+		<typeAlias type="com.sist.dao.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.sist.dao.ZipcodeVO" alias="ZipcodeVO"/>
+	</typeAliases>
+	<!-- connection 관련 : getConnection/disConnection -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/><!-- COMMIT / ROLLBACK -->
+			<dataSource type="POOLED"> <!-- DBCP : maxActive8 maxIdle:8 -->
+				<property name="driver" value="${driver}"/>
+				<property name="url" value="${url}"/>
+				<property name="username" value="${username}"/>
+				<property name="password" value="${password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/sist/dao/member-mapper.xml"/>
+	</mappers>
+</configuration>
