@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.sist.dao.music-mapper">
+ 	<select id="musicListData" resultType="MusicVO">
+ 		SELECT mno,title,singer,album,poster,state,idcrement,rownum
+ 		FROM (SELECT mno,title,singer,album,poster,state,idcrement
+ 		FROM genie_music ORDER BY mno ASC)
+ 		WHERE rownum&lt;=50
+ 	</select>
+ </mapper>

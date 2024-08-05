@@ -33,7 +33,8 @@ import com.sist.dao.*;
  */
 public class MainClass {
 	public static void main(String[] args) {
-		MainClass mc=new MainClass();    
+		MainClass mc=new MainClass();  
+		mc.foodData();
 	}
 	public void foodData() {
 		FoodDAO dao=FoodDAO.newInstance();
@@ -68,16 +69,16 @@ public class MainClass {
 					Element content=doc2.selectFirst("div.article div#info_ps_f");
 					System.out.println(content.text()); 
 					System.out.println("===========================================================");
-					FoodVO vo=new FoodVO();
-					vo.setName(name.text().substring(0,name.text().indexOf("[")));
-					vo.setPhone(phone.text());
-					vo.setType(type.text());
-					vo.setAddress(address.text());
-					vo.setTheme(theme.text());
-					vo.setPoster(poster.attr("src")); //db에 붙였으니까 주소 안붙여도 된다 
-					vo.setContent(content.text());
-					vo.setScore(Double.parseDouble(score.text()));
-					dao.foodInsert(vo);
+//					FoodVO vo=new FoodVO();
+//					vo.setName(name.text().substring(0,name.text().indexOf("[")));
+//					vo.setPhone(phone.text());
+//					vo.setType(type.text());
+//					vo.setAddress(address.text());
+//					vo.setTheme(theme.text());
+//					vo.setPoster(poster.attr("src")); //db에 붙였으니까 주소 안붙여도 된다 
+//					vo.setContent(content.text());
+//					vo.setScore(Double.parseDouble(score.text()));
+//					dao.foodInsert(vo);
 					}catch(Exception ex) {}
 				}
 			}
