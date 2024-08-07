@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.databoard-mapper">
+	<!-- 
+		<sql> : sql문장의 중복을 제거 => <include>
+		<select id="" resultType="" parameterType="", resultMap="">
+		        구분자  결과값(sql=> 담는 변수)  => ?에 값 채우기  컬럼명이 다른 경우 
+		        <resultMap id="" type="boardVO"
+		        	<result colum="board_no" property)_="dvo.no>
+		        </resultMap>
+		  컬럼명  : board_no board_name board_subject ...
+		  VO     : no,name,subject...
+		  SELECT : no,name, subject...
+		  =============================
+		       setBoard_no()
+		       SetNo(), seName(), setSubject()
+		<insert id="" parameterType=""> = <sessionKey>:자동 증가 번호
+		<update id="" parameterType="">
+		<delete id="" parameterTupe="">
+		= id는 중복이 되면 안된다 
+		  =================== HTML / CSS => javascript:<jsp:include>  
+	 	#{} / ${} = 구분
+	 	JOIN / SUBQUERY
+	 -->
+	 <!-- 추가 -->
+	 <insert id="databoardInsert" parameterType="dataBoardVO">
+	 	INSERT INTO project_databoard VALUES(
+	 		(SELECT NVL(MAX(no)+1,1) FROM project_databoard),
+	 		#{name},#{subject},#{content},#{pwd},SYSDATE,0,
+	 		#{filename},#{filesize}
+	 	)
+	 </insert>
+	 <!-- 목록 -->
+	 <select id="databoardListData" parameterType="java.util.Map" resultType="DataboardVO">
+	 	SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,num
+		FROM (SELECT no,subject,name,regdate,hit,rownum as num
+		FROM (SELECT /*+ INDEX_DESC(project_databoard pd_no_pk)*/no,subject,name,regdate,hit
+		FROM project_databoard))
+		WHERE num BETWEEN #{start} AND #{end}
+	 </select>
+	 <select id="databoardRowCount" resultType="int">
+	 	SELECT COUNT(*) FROM project_databoard
+	 </select>
+	 <!-- 상세보기 -->
+	 <!-- 수정 -->
+	 <!-- 삭제 -->
+	 <!-- *** 동적 쿼리 -->
+</mapper>

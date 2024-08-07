@@ -70,7 +70,7 @@
 <div class="wrapper row1">
   <header id="header" class="clear"> 
     <div id="logo" class="fl_left">
-      <h1><a href="index.html">Food AND Recipe</a></h1>
+      <h1><a href="../main/main.do">Food AND Recipe</a></h1>
     </div>
     <div class="fl_right">
       <c:if test="${sessionScope.id==null }">
@@ -104,47 +104,48 @@
 	      </c:if>
       <li><a class="drop" href="#">맛집</a>
         <ul>
-          <li><a href="pages/gallery.html">맛집 찾기</a></li>
+          <li><a href="#">맛집 찾기</a></li>
           	<c:if test="${sessionScope.id!=null }">
-         	  <li><a href="pages/full-width.html">맛집 예약</a></li>
+         	  <li><a href="#">맛집 예약</a></li>
           	</c:if>
-          <li><a href="pages/sidebar-left.html">맛집 추천</a></li>
+          <li><a href="#">맛집 추천</a></li>
         </ul>
       </li>
       <li><a class="drop" href="#">레시피</a>
         <ul>
-          <li><a href="pages/gallery.html">쉐프</a></li>
-          <li><a href="pages/full-width.html">레시피</a></li>
-          <li><a href="pages/sidebar-left.html">레시피 만들기</a></li>
+          <li><a href="#">쉐프</a></li>
+          <li><a href="#">레시피</a></li>
+          <li><a href="#">레시피 만들기</a></li>
         </ul>
       </li>
       <li><a class="drop" href="#">스토어</a>
         <ul>
-          <li><a href="pages/gallery.html">전체 상품</a></li>
-          <li><a href="pages/full-width.html">베스트 상품</a></li>
-          <li><a href="pages/sidebar-left.html">특가 상품</a></li>
-          <li><a href="pages/sidebar-left.html">가격 비교</a></li>
+          <li><a href="#">전체 상품</a></li>
+          <li><a href="#">베스트 상품</a></li>
+          <li><a href="#">특가 상품</a></li>
+          <li><a href="#">가격 비교</a></li>
         </ul>
        </li>
       <li><a class="drop" href="#">여행</a>
         <ul>
-          <li><a href="pages/gallery.html">명소</a></li>
-          <li><a href="pages/full-width.html">자연&관광</a></li>
-          <li><a href="pages/sidebar-left.html">호텔</a></li>
-          <li><a href="pages/sidebar-left.html">쇼핑</a></li>
-          <li><a href="pages/sidebar-left.html">날씨</a></li>
+          <li><a href="#">명소</a></li>
+          <li><a href="#">자연&관광</a></li>
+          <li><a href="#">호텔</a></li>
+          <li><a href="#">쇼핑</a></li>
+          <li><a href="#">날씨</a></li>
         </ul>
        </li>
       <li><a class="drop" href="#">커뮤니티</a>
         <ul>
-          <li><a href="pages/gallery.html">자유게시판</a></li>
+          <li><a href="../board/list.do">자유게시판</a></li>
           	<c:if test="${sessionScope.id!=null }">
-          	 <li><a href="pages/full-width.html">묻고 답하기</a></li>
+          	 <li><a href="../replyboard/list.do">묻고 답하기</a></li>
           	</c:if>
-          <li><a href="pages/sidebar-left.html">공지사항</a></li>
+          <li><a href="../notice/list.do">공지사항</a></li>
           <c:if test="${sessionScope.id!=null }">
-             <li><a href="pages/sidebar-left.html">실시간 채팅</a></li>
+             <li><a href="../chat/chat.do">실시간 채팅</a></li>
           </c:if>
+          	<li><a href="../databoard/list.do">자료실</a></li>
         </ul>
        </li>
        <c:if test="${sessionScope.id!=null }">
