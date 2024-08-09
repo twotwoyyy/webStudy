@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.reply-mapper">
+ <select id="replyListData" resultType="BoardReplyVO" parameterType="int">
+   SELECT rno,bno,id,name,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday
+   FROM project_board_reply
+   WHERE bno=#{bno}
+   ORDER BY rno DESC
+ </select>
+ <insert id="replyInsert" parameterType="BoardReplyVO">
+  INSERT INTO project_board_reply VALUES(
+   (SELECT NVL(MAX(rno)+1,1) FROM project_board_reply),
+   #{bno},#{id},#{name},#{msg},SYSDATE
+  )
+ </insert>
+ <delete id="replyDelete" parameterType="int">
+  DELETE FROM project_board_reply 
+  WHERE rno=#{rno}
+ </delete>
+ <update id="replyUpdate" parameterType="BoardReplyVO">
+  UPDATE project_board_reply SET
+  msg=#{msg}
+  WHERE rno=#{rno}
+ </update>
+</mapper>

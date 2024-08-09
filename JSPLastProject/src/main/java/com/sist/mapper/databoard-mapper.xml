@@ -44,7 +44,87 @@
 	 	SELECT COUNT(*) FROM project_databoard
 	 </select>
 	 <!-- 상세보기 -->
+	 <update id="databoardHitIncrement" parameterType="int">
+	 	UPDATE project_databoard SET 
+	 	hit=hit+1
+	 	WHERE no=#{no}
+	 </update>
+	 <select id="databoardDetailData" resultType="DataboardVO" parameterType="int">
+		SELECT no,name,subject,content,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday,hit,filename,filesize
+		FROM project_databoard
+		WHERE no=#{no}	 
+	 </select>
+	 <!-- 
+	 	mybatis : config.xml은 셋팅 이미 설정
+	 	          mapper.xml
+	 	          ===========
+	 	          1. CRUD : INSERT/UPDATE/DELETE/SELECT
+	 	          2. JOIN
+	 	          3. 동적 쿼리 => 검색 
+	  -->
 	 <!-- 수정 -->
+	 <update id="databoardUpdate" parameterType="DataboardVO">
+	 	UPDATE project_databoard SET
+	 	name=#{name},subject=#{subject},content=#{content},filename=#{filename},filesize=#{filesize}
+	 	WHERE no=#{no}
+	 </update>
 	 <!-- 삭제 -->
-	 <!-- *** 동적 쿼리 -->
+	 <select id="databoardGetPassword" resultType="string">
+	 	SELECT pwd FROM project_databoard WHERE no=#{no}
+	 </select>
+	 <select id="databoardFileInfoData" resultType="DataboardVO" parameterType="int">
+	 	SELECT filename,filesize FROM project_databoard WHERE no=#{no}
+	 </select>
+	 <delete id="databoardDelete" parameterType="int">
+	 	DELETE FROM project_databoard WHERE no=#{no}
+	 </delete>
+	<delete id="databoardReplyDelete" parameterType="int">
+   	 	DELETE FROM project_board_reply
+    	WHERE bno=#{no}
+    </delete>
+	 <!-- *** 동적 쿼리: 검색 
+	 	${} => 문자열 
+	 	#{} => 문자열 
+	 	WHERE name=홍길동 (오류) => '홍길동'이 되어야 한다
+	 	#{} => ''을 넣어준다 => 일반 데이터 
+	 	${} => ''을 넣지 않는다 => 컬럼, 테이블명 지정시 많이 사용 
+	 -->
+	 <!-- 
+	 	WHERE 
+	 	<if test="fs=='N'">
+	 	  name LIKE ~
+	 	</if>
+	 	<if test="fs=='S'">
+	 	  OR subject LIKE ~
+	 	</if>
+	 	<if test="fs=='C'">
+	 	  OR content LIKE ~
+	 	</if>
+	  -->
+<!-- <select id="databoardFindData" parameterType="java.util.Map" resultType="DataboardVO">
+	 	SELECT no,name,subject,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit
+	 	FROM project_databoard
+	 	WHERE ${fs} LIKE '%'||#{SS}||'%'
+	 </select> -->
+	 <select id="databoardFindData" resultType="DataboardVO" parameterType="java.util.Map">
+	 	SELECT no,name,subject,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit
+	 	FROM project_databoard WHERE
+	 	<trim prefix="(" suffix=")" prefixOverrides="OR">
+	 		<foreach collection="fsArr" item="fs">
+	 			<trim prefix="OR">
+	 				<choose>
+	 					<when test="fs=='N'.toString()">
+	 						name LIKE '%'||#{ss}||'%'
+	 					</when>
+	 					<when test="fs=='S'.toString()">
+	 						subject LIKE '%'||#{ss}||'%'
+	 					</when>
+	 					<when test="fs=='C'.toString()">
+	 						content LIKE '%'||#{ss}||'%'
+	 					</when>
+	 				</choose>
+	 			</trim>
+	 		</foreach>
+	 	</trim>
+	 </select>
 </mapper>

@@ -9,6 +9,9 @@
 		<typeAlias type="com.sist.vo.MemberVO" alias="MemberVO"/>
 		<typeAlias type="com.sist.vo.BoardVO" alias="BoardVO"/>
 		<typeAlias type="com.sist.vo.DataboardVO" alias="DataboardVO"/>
+		<typeAlias type="com.sist.vo.EmpVO" alias="EmpVO"/>
+		<typeAlias type="com.sist.vo.MusicVO" alias="MusicVO"/>
+		<typeAlias type="com.sist.vo.BoardReplyVO" alias="BoardReplyVO"/>
 	</typeAliases>
 	<!-- connection 관련 : getConnection/disConnection -->
 	<environments default="development">
@@ -26,5 +29,8 @@
 		<mapper resource="com/sist/mapper/member-mapper.xml"/>
 		<mapper resource="com/sist/mapper/board-mapper.xml"/>
 		<mapper resource="com/sist/mapper/databoard-mapper.xml"/>
+		<mapper resource="com/sist/mapper/emp-mapper.xml"/>
+		<mapper resource="com/sist/mapper/music-mapper.xml"/>
+		<mapper resource="com/sist/mapper/reply-mapper.xml"/>
 	</mappers>
 </configuration>

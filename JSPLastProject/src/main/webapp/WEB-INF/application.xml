@@ -4,4 +4,7 @@
 	<bean id="member" class="com.sist.model.MemberModel"/>
 	<bean id="board" class="com.sist.model.BoardModel"/>
 	<bean id="databoard" class="com.sist.model.DataboardModel"/>
+	<bean id="emp" class="com.sist.model.EmpModel"/>
+	<bean id="music" class="com.sist.model.MusicModel"/>
+	<bean id="reply" class="com.sist.model.BoardReplyModel"/>
 </beans>

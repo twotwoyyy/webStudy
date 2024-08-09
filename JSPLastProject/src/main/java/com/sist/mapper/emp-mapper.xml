@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.emp-mapper">
+   <!-- 
+      JOIN : 포함클래스 (has-a)
+      
+      while(rs.next()){
+         EmpVO vo=new EmpVO();
+         vo.setEmpno(rs.getString(1))
+         ..l
+         vo.getDvo().setDname(rs.getString(7) => 조인 데이터 채울때 resultMap
+      }   
+    -->
+    <resultMap type="com.sist.vo.EmpVO" id="empMap">
+       <result property="dvo.dname" column="dname"/> <!-- ResultSet property=변수명 column=컬럼명-->
+       <!-- vo.getDvo().setDname(rs.getString("dname") -->
+       <result property="dvo.loc" column="loc"/>
+       <!-- vo.getDvo().setLoc(rs.getString("loc")) -->
+       
+       <!--
+          <result property="ename" column="ename"/> 조인이 아닐때 
+          vo.setEname(rs.getString("ename") 자동 세팅
+       -->
+       <result property="svo.grade" column="grade"/>
+    </resultMap>
+    <select id="empListData" resultMap="empMap">
+       SELECT empno, ename, job, TO_CHAR(hiredate, 'YYYY-MM-DD') as dbday, sal, emp.deptno, dname, loc, grade
+       FROM emp, dept, salgrade
+       WHERE emp.deptno=dept.deptno
+       AND sal BETWEEN losal AND hisal
+    </select>
+    <select id="empFindData" resultType="EmpVO" parameterType="java.util.Map">
+       SELECT empno, ename, job, TO_CHAR(hiredate, 'YYYY-MM-DD') as dbday, sal, deptno, comm
+       FROM emp
+       <!-- 
+          WHERE ename IN('', '', '', '', '',...)
+          
+          trim 1. 추가 - prefix : 처음 추가 => 접두어
+                        suffix : 마지막에 추가 => 접미어
+                        suffixOverrides - 뒤에 데이터 제거
+                        prefixoverrides - 앞에 데이터 제거
+               2. 삭제(제거)
+                  ex) 
+                   SELECT * FROM emp
+                   WHERE
+                   <trim prefixOverrides="OR"
+                      <if test="column=='name'">
+                        OR name LIKE ~
+                      </if>
+                      <if test="column=='subject'">
+                        OR subject LIKE ~
+                      </if>
+                      <if test="column=='content'">
+                        OR content LIKE ~
+                      </if>
+                   </trim>
+
+         WHERE ename IN(?, ?, ?, ?, ?, ))
+         [CLARK, JONES, ALLEN, WARD]
+         
+         IN연산자 = <foreach>         
+         
+         동적 쿼리 ***
+           <trim> : 추가 / 제거
+                   WHERE ename (추가 => prefix)
+                   <trim prefix="LIKE">
+                   WHERE ename LIKE '%'||#{name}||'%' OR(맨 마지막에 제거해야 한다)
+                   <trim suffixOverrides="OR"> (제거 => suffixOverrides)
+           <foreach> : => IN (여기에 들어가는 데이터)
+	           <foreach collection="nameArr" item="name" close=")" separator=",">
+	                    ==========           ====        ======    ==========
+	                        |                |값 읽기     |끝나면 )치라 | 데이터, 데이터 ...( 시작할 때 처리
+	                     배열/List => Map => 키 이름
+	                  for(String name: 배열)
+	                      ===========  ====
+	                        item       Collection
+           <if> : 조건문
+                  <if test="조건문">
+                    수행할 SQL 문장
+                  </if>
+           <choose> : 다중 조건문
+                  <choose>
+                  	<when test="조건문">SQL문장</when>
+                  	<when test="조건문">SQL문장</when>
+                  	<when test="조건문">SQL문장</when>
+                  	..
+                  	<otherwise>SQL else 문장(기타)</otherwise>
+                  </choose>
+           <where> : where 문장 => WHERE
+           <set> : UPDATE
+           
+           FROM emp WHERE ename IN('','',...) 
+           동적 쿼리 => 사용자의 요청에 따라 SQL문장을 변경 
+        -->
+        <trim prefix="WHERE ename IN(" suffix=")" suffixOverrides=")">
+           <foreach collection="nameArr" item="name" close=")" separator=",">
+              #{name}
+           </foreach>
+        </trim>
+    </select>
+    <select id="empEnameList" resultType="String">
+       SELECT ename FROM emp
+    </select> 
+</mapper> 
