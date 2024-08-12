@@ -7,4 +7,6 @@
 	<bean id="emp" class="com.sist.model.EmpModel"/>
 	<bean id="music" class="com.sist.model.MusicModel"/>
 	<bean id="reply" class="com.sist.model.BoardReplyModel"/>
+	<bean id="food" class="com.sist.model.FoodModel"/>
+	<bean id="goods" class="com.sist.model.GoodsModel"/>
 </beans>

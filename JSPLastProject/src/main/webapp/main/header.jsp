@@ -104,7 +104,8 @@
 	      </c:if>
       <li><a class="drop" href="#">맛집</a>
         <ul>
-          <li><a href="#">맛집 찾기</a></li>
+          <li><a href="../food/list.do">맛집 목록</a></li>
+          <li><a href="../food/find.do">맛집 찾기</a></li>
           	<c:if test="${sessionScope.id!=null }">
          	  <li><a href="#">맛집 예약</a></li>
           	</c:if>
@@ -120,9 +121,10 @@
       </li>
       <li><a class="drop" href="#">스토어</a>
         <ul>
-          <li><a href="#">전체 상품</a></li>
-          <li><a href="#">베스트 상품</a></li>
-          <li><a href="#">특가 상품</a></li>
+          <li><a href="../goods/list.do">전체 상품</a></li>
+          <li><a href="../goods/list.do?cno=2">베스트 상품</a></li>
+          <li><a href="../goods/list.do?cno=3">신상품</a></li>
+          <li><a href="../goods/list.do?cno=4">특가 상품</a></li>
           <li><a href="#">가격 비교</a></li>
         </ul>
        </li>

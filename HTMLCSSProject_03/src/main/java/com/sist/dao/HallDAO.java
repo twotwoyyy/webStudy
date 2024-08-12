@@ -5,7 +5,7 @@ public class HallDAO {
 	private Connection conn;
 	private PreparedStatement ps;
 	private static HallDAO dao;
-	private final String URL="jdbc:oracle:thin:@localhost:1521:XE";
+	private final String URL="jdbc:oracle:thin:@211.238.142.124:1521:XE";
 	
 	// 드라이버 등록
 	public HallDAO() { 
@@ -17,7 +17,7 @@ public class HallDAO {
 	// 연결
 	public void getConnection() {
 		try {
-			conn = DriverManager.getConnection(URL, "hr", "happy");
+			conn = DriverManager.getConnection(URL, "hr1", "happy");
 		} catch (Exception ex) {}
 	}
 
