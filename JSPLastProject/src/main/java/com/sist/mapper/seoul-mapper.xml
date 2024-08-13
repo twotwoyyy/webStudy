@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.seoul-mapper">
+	<!-- 
+		while(rs.next(){
+			SeoulLocationVO vo=new SeoulLocationVO();
+			vo.setNo(rs.getInt(1) ====> 이게 resultType (여기에 값을 채워넣어라) 
+		}
+	 -->
+	<select id="seoulLocationListData" resultType="SeoulLocationVO" parameterType="java.util.Map">
+		SELECT no,title,poster,num
+		FROM (SELECT no,title,poster,rownum as num
+		FROM (SELECT no,title,poster
+		FROM location ORDER BY no ASC))
+		WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	<!-- 
+		int total=re.getInt(1)
+		// location => 동의어 처리함 (project_seoul_location)
+	 -->
+	<select id="seoulLocationTotalPage" resultType="int">
+		SELECT CEIL(COUNT(*)/20.0) FROM location
+	</select>
+	
+	
+	<select id="seoulNatureListData" resultType="com.sist.vo.SeoulNatureVO" parameterType="java.util.Map">
+		SELECT no,title,poster,num
+		FROM (SELECT no,title,poster,rownum as num
+		FROM (SELECT no,title,poster
+		FROM nature ORDER BY no ASC))
+		WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	<select id="seoulNatureTotalPage" resultType="int">
+		SELECT CEIL(COUNT(*)/20.0) FROM nature
+	</select>
+
+	<select id="seoulShopListData" resultType="com.sist.vo.SeoulShopVO" parameterType="java.util.Map">
+		SELECT no,title,poster,num
+		FROM (SELECT no,title,poster,rownum as num
+		FROM (SELECT no,title,poster
+		FROM shop ORDER BY no ASC))
+		WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	<select id="seoulShopTotalPage" resultType="int">
+		SELECT CEIL(COUNT(*)/20.0) FROM shop
+	</select>
+
+</mapper>

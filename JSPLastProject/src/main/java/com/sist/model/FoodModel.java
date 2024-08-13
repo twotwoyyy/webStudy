@@ -4,6 +4,7 @@ import java.util.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.vo.*;
 import com.sist.controller.RequestMapping;
@@ -77,6 +78,22 @@ public class FoodModel {
 		/*
 		 * 맛집(1) / 레시피(2) / 서울여행(3) / 상품(4) 
 		 */
+		boolean bCheck=false;
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		if(id!=null) {
+			Map map=new HashMap();
+			map.put("cno", fno);
+			map.put("type", type);
+			map.put("id", id);
+			int count=AllJjimDAO.allJjiCheck(map);
+			if(count==1)
+				bCheck=true;
+			else
+				bCheck=false;
+			
+			request.setAttribute("check", bCheck);
+		}
 		request.setAttribute("main_jsp", "../food/detail.jsp");
 		return "../main/main.jsp";
 	}
