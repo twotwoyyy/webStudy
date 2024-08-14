@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sist.vo.*;
+import com.sist.commons.CommonsModel;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.*;
 public class FoodModel {
@@ -44,6 +45,7 @@ public class FoodModel {
 		// DB 연동 => 출력할 데이터 전송
 		request.setAttribute("count", count);
 		request.setAttribute("main_jsp", "../food/list.jsp");
+		CommonsModel.footerPrint(request);
 		return "../main/main.jsp";
 	}
 	// 쿠키
@@ -95,6 +97,7 @@ public class FoodModel {
 			request.setAttribute("check", bCheck);
 		}
 		request.setAttribute("main_jsp", "../food/detail.jsp");
+		CommonsModel.footerPrint(request);
 		return "../main/main.jsp";
 	}
 	// 검색
@@ -140,6 +143,7 @@ public class FoodModel {
 		request.setAttribute("fList", fList);
 		request.setAttribute("ss", ss);
 		request.setAttribute("main_jsp", "../food/find.jsp");
+		CommonsModel.footerPrint(request);
 		return "../main/main.jsp";
 	}
 }

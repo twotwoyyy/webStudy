@@ -5,6 +5,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sist.commons.CommonsModel;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.*;
 import com.sist.vo.*;
@@ -22,6 +23,7 @@ public class MainModel {
 				}
 			}
 		}
+		CommonsModel.footerPrint(request);
 		List<FoodVO> hitList=FoodDAO.foodHitTopData();
 		List<FoodVO> likeList=FoodDAO.foodLikeTopData();
 		List<FoodVO> jjimList=FoodDAO.foodJjimTopData();

@@ -23,6 +23,7 @@ public class AllJjimModel {
 		String result="";
 		try {
 			AllJjimDAO.allJjimInsert(map);
+			AllJjimDAO.JjimCountIncrement(map);
 			result="OK";
 		}catch(Exception ex) {
 			result=ex.getMessage();

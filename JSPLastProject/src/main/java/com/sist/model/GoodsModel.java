@@ -4,6 +4,7 @@ import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sist.commons.CommonsModel;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.*;
 import com.sist.vo.*;
@@ -44,6 +45,7 @@ public class GoodsModel {
 		request.setAttribute("title", titles[Integer.parseInt(cno)]);
 		
 		request.setAttribute("main_jsp", "../goods/list.jsp");
+		CommonsModel.footerPrint(request);
 		return "../main/main.jsp";
 	}
 	@RequestMapping("goods/detail.do")
@@ -59,6 +61,7 @@ public class GoodsModel {
 		vo.setPrice(Integer.parseInt(price));
 		request.setAttribute("vo", vo);
 		request.setAttribute("main_jsp", "../goods/detail.jsp");
+		CommonsModel.footerPrint(request);
 		return "../main/main.jsp";
 	}
 }

@@ -38,4 +38,25 @@ public class AllJjimDAO {
 		}
 		return count;
 	}
+	
+	/*
+	 * 	<update id="JjimCountIncrement" parameterType="java.util.Map">
+			UPDATE project_food_house SET 
+			jjimcount=(SELECT COUNT(*) FROM all_jjim WHERE type=#{type} AND cno=#{cno})
+			WHERE fno=#{cno}
+		</update>
+	 */
+	// 맛집 찜 개수 
+	public static void JjimCountIncrement(Map map) {
+		SqlSession session=null;
+		try {
+			session=ssf.openSession(true);
+			session.update("JjimCountIncrement",map);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+	}
 }

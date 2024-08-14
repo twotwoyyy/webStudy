@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.sist.commons.CommonsModel;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.*;
 import com.sist.vo.*;
@@ -42,6 +43,7 @@ public class MemberModel {
 	public String member_join(HttpServletRequest request, HttpServletResponse response) {
 		request.setAttribute("main_jsp", "../member/join.jsp");
 		// 아이디 중복 체크, 우편번호 검색 
+		CommonsModel.footerPrint(request);
 		return "../main/main.jsp";
 	}
 }

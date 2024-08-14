@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.notice-mapper">
+	<!-- 공지사항 올리기 : admin -->
+	<insert id="noticeInsert" parameterType="NoticeVO">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+		<!--       keyProperty 증가되는 컬럼, 시퀀스, 먼저 증가 (BEFORE) -->
+			SELECT NVL(MAX(no)+1,1) as no FROM notice
+		</selectKey>
+		INSERT INTO notice(no,type,subject,content)
+		VALUES(#{no},#{type},#{subject},#{content})
+	</insert>
+	<!-- 공지목록 출력: admin/user -->
+	<select id="noticeListData" resultType="NoticeVO" parameterType="java.util.Map">
+		SELECT no,type,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,num
+		FROM (SELECT no,type,subject,name,regdate,hit,rownum as num
+		FROM (SELECT no,type,subject,name,regdate,hit
+		FROM notice ORDER BY no DESC))
+		WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	<select id="noticeRowCount" resultType="int">
+		SELECT COUNT(*) FROM notice
+	</select>
+	<!-- 공지 상세보기 : user -->
+	<update id="noticeHitIncrement" parameterType="int">
+		UPDATE notice SET 
+		hit=hit+1
+		WHERE no=#{no}
+	</update>
+	<!-- 공지 수정 : admin -->
+	<select id="noticeUpdateData" resultType="NoticeVO" parameterType="int">
+		SELECT no,type,hit,name,subject,content,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday 
+		FROM notice
+		WHERE no=#{no}
+	</select>
+	<update id="noticeUpdate" parameterType="NoticeVO">
+		UPDATE notice SET 
+		type=#{type},subject=#{subject},content=#{content}
+		WHERE no=#{no}
+	</update>
+	<!-- 공지 삭제 : admin -->
+	<delete id="noticeDelete" parameterType="int">
+		DELETE FROM notice
+		WHERE no=#{no}
+	</delete>
+	<!-- 공지사항 Top5 -->
+	<select id="noticeTop5Data" resultType="NoticeVO">
+		SELECT no,type,subject,rownum
+		FROM (SELECT no,type,subject
+		FROM notice ORDER BY hit DESC)
+		WHERE rownum&lt;=5
+	</select>
+</mapper>

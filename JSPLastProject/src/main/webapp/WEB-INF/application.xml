@@ -12,4 +12,7 @@
 	<bean id="seoul" class="com.sist.model.SeoulModel"/>
 	<bean id="allreply" class="com.sist.model.AllReplyModel"/>
 	<bean id="alljjim" class="com.sist.model.AllJjimModel"/>
+	<bean id="notice" class="com.sist.model.NoticeModel"/>
+	<bean id="admin" class="com.sist.model.AdminModel"/>
+	<bean id="mypage" class="com.sist.model.MypageModel"/>
 </beans>
