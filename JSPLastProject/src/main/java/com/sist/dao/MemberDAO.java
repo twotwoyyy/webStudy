@@ -48,4 +48,69 @@ public class MemberDAO {
 		}
 		return vo;
 	}
+	// 아이디 중복 체크
+	public static int memberIdCheck(String id) {
+		int count=0;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			count=session.selectOne("memberIdCountData",id);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return count;
+	}
+	// 회원가입 입력
+	public static void memberInsert(MemberVO vo) {
+		SqlSession session=null;
+		try {
+			session=ssf.openSession(true);
+			session.insert("memberInsert",vo);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+	}
+	// 회원정보 수정 데이터 가져오기
+	public static MemberVO memberUpdateData(String id) {
+		MemberVO vo=new MemberVO();
+		SqlSession session=null;
+		try {
+			session=ssf.openSession(true);
+			vo=session.selectOne("memberUpdateData",id);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return vo;
+	}
+	// 회원 정보 수정
+	public static boolean memberUpdate(MemberVO vo) {
+		boolean bCheck=false;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			String db_pwd=session.selectOne("memberGetPassword",vo.getId());
+			if(db_pwd.equals(vo.getPwd())) {
+				bCheck=true;
+				session.update("memberUpdate",vo);
+				session.commit();
+			}else {
+				bCheck=false;
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}	
+		return bCheck;
+	}
 }

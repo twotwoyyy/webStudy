@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.replyboard-mapper">
+  <!-- 목록 -->
+  <select id="replyBoardListData" resultType="ReplyBoardVO" parameterType="hashmap">
+    SELECT no,id,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,group_step,num
+    FROM (SELECT no,id,subject,name,regdate,hit,group_step,rownum as num 
+    FROM (SELECT no,id,subject,name,regdate,hit,group_step 
+    FROM project_replyboard ORDER BY group_id DESC , group_step ASC))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
+  <select id="replyBoardRowCount" resultType="int">
+   SELECT COUNT(*) FROM project_replyboard
+  </select>
+  <!-- 등록 / 답변 -->
+  <insert id="replyBoardInsert" parameterType="ReplyBoardVO">
+   INSERT INTO project_replyboard(no,id,name,subject,content,group_id) 
+   VALUES(pr_no_seq.nextval,#{id},#{name},#{subject},#{content},
+    (SELECT NVL(MAX(group_id)+1,1) FROM project_replyboard)
+   )
+  </insert>
+  <select id="adminReplyBoardListData" resultType="ReplyBoardVO" parameterType="hashmap">
+    SELECT no,id,isreply,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,group_step,group_id,num
+    FROM (SELECT no,id,isreply,subject,name,regdate,hit,group_step,group_id,rownum as num 
+    FROM (SELECT no,id,isreply,subject,name,regdate,hit,group_step,group_id
+    FROM project_replyboard WHERE group_step!=1 ORDER BY group_id DESC , group_step ASC))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
+  <insert id="adminReplyBoardInsert" parameterType="ReplyBoardVO">
+   INSERT INTO project_replyboard(no,id,name,subject,content,group_id,group_step,isreply) 
+   VALUES(pr_no_seq.nextval,#{id},#{name},#{subject},#{content},
+    #{group_id},1,1
+   )
+  </insert>
+  <select id="adminReplyInfoData" resultType="ReplyBoardVO" parameterType="int">
+    SELECT group_id,group_step FROM project_replyboard
+    WHERE no=#{no}
+  </select>
+  <update id="adminReplyUpdate" parameterType="int">
+    UPDATE project_replyboard SET 
+    isreply=1
+    WHERE no=#{no}
+  </update>
+  <!-- 등록 / 답변 => 삭제 -->
+  <!-- 수정 -->
+</mapper>

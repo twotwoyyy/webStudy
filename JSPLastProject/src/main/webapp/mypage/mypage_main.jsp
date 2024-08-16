@@ -10,7 +10,7 @@
 <body>
 <div class="wrapper row3">
   <main class="container clear">
-   <h2 class="sectiontitle">마이페이지</h2>
+   <h2 class="sectiontitle">${title }</h2>
    <div class="one_quarter first">
 	    <div class="panel panel-info">
 	    <div class="panel-heading">
@@ -18,7 +18,7 @@
 	    </div>
 	    <!-- 사이드바 메뉴목록1 -->
 	    <ul class="list-group">
-	      <li class="list-group-item"><a href="#">회원수정</a></li>
+	      <li class="list-group-item"><a href="../member/join_update.do">회원수정</a></li>
 	      <li class="list-group-item"><a href="#">회원탈퇴</a></li>
 	      <li class="list-group-item"><a href="#">비밀번호 변경</a></li>
 	    </ul>

@@ -3,6 +3,7 @@ import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.commons.CommonsModel;
 import com.sist.controller.RequestMapping;
@@ -120,14 +121,72 @@ public class AdminModel {
 		return "redirect:../adminpage/notice_list.do";
 	}
 	
-	
-	@RequestMapping("adminpage/reply_list.do")
-	public String reply_list(HttpServletRequest request, HttpServletResponse response) {
-		
-		request.setAttribute("admin_jsp", "../adminpage/reply_list.jsp");
-		request.setAttribute("main_jsp", "../adminpage/admin_main.jsp");
-		CommonsModel.footerPrint(request);
-		return "../main/main.jsp";
-	}
-	
+	  @RequestMapping("adminpage/reply_list.do")
+	   public String reply_list(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   String page=request.getParameter("page");
+		   if(page==null)
+			   page="1";
+		   
+		   int curpage=Integer.parseInt(page);
+		   Map map=new HashMap();
+		   int rowSize=15;
+		   int start=(rowSize*curpage)-(rowSize-1);
+		   int end=rowSize*curpage;
+		   
+		   map.put("start", start);
+		   map.put("end", end);
+		   
+		   List<ReplyBoardVO> list=ReplyBoardDAO.adminReplyBoardListData(map);
+		   int count=ReplyBoardDAO.replyBoardRowCount();
+		   int totalpage=(int)(Math.ceil(count/15.0));
+		   
+		   request.setAttribute("arList", list);
+		   request.setAttribute("curpage", curpage);
+		   request.setAttribute("totalpage", totalpage);
+		   request.setAttribute("count", count);
+		   
+		   request.setAttribute("admin_jsp", "../adminpage/admin_reply_list.jsp");
+		   request.setAttribute("main_jsp", "../adminpage/admin_main.jsp");
+		   CommonsModel.footerPrint(request);
+		   return "../main/main.jsp";
+	   }
+	   @RequestMapping("adminpage/reply_insert.do")
+	   public String reply_insert(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   String no=request.getParameter("no");
+		   request.setAttribute("no", no);
+		   request.setAttribute("admin_jsp", "../adminpage/admin_reply_insert.jsp");
+		   request.setAttribute("main_jsp", "../adminpage/admin_main.jsp");
+		   CommonsModel.footerPrint(request);
+		   return "../main/main.jsp";
+	   }
+	   
+	   @RequestMapping("adminpage/reply_insert_ok.do")
+	   public String reply_insert_ok(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   try
+		   {
+			   request.setCharacterEncoding("UTF-8");
+		   }catch(Exception ex) {}
+		   String no=request.getParameter("no");
+		   String subject=request.getParameter("subject");
+		   String content=request.getParameter("content");
+		   HttpSession session=request.getSession();
+		   String id=(String)session.getAttribute("id");
+		   String name=(String)session.getAttribute("name");
+		   ReplyBoardVO rvo=ReplyBoardDAO.adminReplyInfoData(Integer.parseInt(no));
+		   
+		   ReplyBoardVO vo=new ReplyBoardVO();
+		   vo.setId(id);
+		   vo.setSubject(subject);
+		   vo.setContent(content);
+		   vo.setName(name);
+		   vo.setGroup_id(rvo.getGroup_id());
+		   
+		   ReplyBoardDAO.adminReplyBoardInsert(Integer.parseInt(no), vo);
+		   
+		   return "redirect:../adminpage/reply_list.do";
+	   }
+	   
 }

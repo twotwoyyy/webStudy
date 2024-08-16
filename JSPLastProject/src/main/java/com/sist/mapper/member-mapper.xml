@@ -11,4 +11,27 @@
  		SELECT * FROM project_member
  		WHERE id=#{id}
  	</select>
+ 	
+ 	<select id="memberUpdateData" resultType="MemberVO" parameterType="string">
+ 		SELECT id,name,sex,birthday,post,addr1,addr2,phone,email,content
+ 		FROM project_member
+ 		WHERE id=#{id}
+ 	</select>
+ 	<insert id="memberInsert" parameterType="MemberVO">
+ 		INSERT INTO project_member VALUES(
+ 			#{id}, #{pwd}, #{name}, #{sex}, #{birthday}, #{post},
+ 			#{addr1}, #{addr2}, #{phone}, #{email}, #{content}, SYSDATE,'n'
+ 		)
+ 	</insert>
+ 	<!-- 회원 수정 -->
+ 	<select id="memberGetPassword" resultType="string" parameterType="string">
+ 		SELECT pwd FROM project_member
+ 		WHERE id=#{id}
+ 	</select>
+ 	<update id="memberUpdate" parameterType="MemberVO">
+ 		UPDATE project_member SET
+ 		name=#{name}, birthday=#{birthday}, post=#{post},
+ 		addr1=#{addr1}, addr2=#{addr2}, phone=#{phone}, email=#{email}, content=#{content}
+ 		WHERE id=#{id}
+ 	</update>
  </mapper>
