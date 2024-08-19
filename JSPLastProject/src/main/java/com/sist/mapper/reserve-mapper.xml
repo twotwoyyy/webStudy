@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.reserve-mapper">
+	<insert id="reserveInsert" parameterType="ReserveVO">
+		INSERT INTO project_reserve(rno,id,fno,day,time,inwon)
+		VALUES(pre_rno_seq.nextval,#{id},#{fno},#{day},#{time},#{inwon})
+	</insert>
+	<!-- Mypage -->
+	<resultMap type="com.sist.vo.ReserveVO" id="reserveMap">
+		<result property="fvo.name" column="name"/>
+		<!-- 
+			while(rs.next()){
+			ReserveVO vo=new ReserveVO();
+			vo.getFvo().setName(rs.getString("name"))
+			===================              ======
+			 property="fvo.name"           column="name"
+			}
+		 -->
+		<result property="fvo.poster" column="poster"/>
+		<result property="fvo.address" column="address"/>
+		<result property="fvo.phone" column="phone"/>
+	</resultMap>
+	<select id="reserveMyPageData" resultMap="reserveMap" parameterType="string">
+		SELECT rno,pr.fno,day,pr.time,inwon,isok,pf.name, pf.poster, pf.address, pf.phone, TO_CHAR(regdate, 'YYYY-MM-DD') AS dbday
+		FROM project_reserve pr, project_food_house pf
+		WHERE pr.fno=pf.fno 
+		AND id=#{id}
+		ORDER BY rno DESC
+	</select>
+	<!-- adminpage -->
+	<!-- admin = 승인 -->
+	<!-- mypage = 확인 -->
+	<!-- mypage = 취소 -->
+</mapper>

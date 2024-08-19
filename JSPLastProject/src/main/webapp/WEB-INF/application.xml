@@ -16,4 +16,5 @@
 	<bean id="admin" class="com.sist.model.AdminModel"/>
 	<bean id="mypage" class="com.sist.model.MypageModel"/>
 	<bean id="replyboard" class="com.sist.model.ReplyBoardModel"/>
+	<bean id="reserve" class="com.sist.model.ReserveModel"/>
 </beans>

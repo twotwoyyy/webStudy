@@ -223,4 +223,96 @@ public class FoodDAO {
 		}
 		return list;
 	}
+	
+	// 예약
+	public static List<FoodVO> foodTypeAllData(String type){
+		List<FoodVO> list=new ArrayList<FoodVO>();
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			list=session.selectList("foodTypeAllData",type);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
+	
+	public static String foodReserveDayData(int fno) {
+		String rdays="";
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			rdays=session.selectOne("foodReserveDayData",fno);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return rdays;
+	}
+	
+	public static String foodReserveTimeData(int dno) {
+		String times="";
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			times=session.selectOne("foodReserveTimeData",dno);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		
+		return times;
+	}
+	
+	public static String foodTimeSelectData(int tno) {
+		String times="";
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			times=session.selectOne("foodTimeSelectData",tno);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		
+		return times;
+	}
+	
+	// 예약 
+	public static void reserveInsert(ReserveVO vo) {
+		SqlSession session=null;
+		try {
+			session=ssf.openSession(true);
+			session.insert("reserveInsert",vo);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+	}
+	
+	public static List<ReserveVO> reserveMyPageData(String id){
+		List<ReserveVO> list=new ArrayList<ReserveVO>();
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			list=session.selectList("reserveMyPageData",id);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
 }
