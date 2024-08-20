@@ -315,4 +315,102 @@ public class FoodDAO {
 		}
 		return list;
 	}
+	
+	/*
+	    * <select id="reserveAdminPageData" resultMap="reserveMap">
+	      SELECT rno,pr.fno,id,day,pr.time,inwon,isok,pf.name,pf.poster,pf.address,pf.phone,
+	             TO_CHAR(regdate,'YYYY-MM-DD') as dbday
+	      FROM project_reserve pr,project_food_house pf
+	      WHERE pr.fno=pf.fno
+	      ORDER BY rno DESC
+	     </select>
+	    */
+	   public static List<ReserveVO> reserveAdminPageData()
+	   {
+	      List<ReserveVO> list=new ArrayList<ReserveVO>();
+	      SqlSession session=null; //Connection
+	      try
+	      {
+	         session=ssf.openSession(true);
+	         list=session.selectList("reserveAdminPageData");
+	      }catch(Exception ex)
+	      {
+	         ex.printStackTrace();
+	      }
+	      finally
+	      {
+	         if(session!=null)
+	            session.close();
+	      }
+	      return list;
+	   }
+	   
+	   public static void reserveOK(int rno) {
+		   List<ReserveVO> list=new ArrayList<ReserveVO>();
+		   SqlSession session=null; //Connection
+		   try
+		   {
+			   session=ssf.openSession(true);
+			   session.update("reserveOK",rno);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   
+	   }
+	   
+	   /*
+	    * 	<delete id="reserveCancel" parameterType="int">
+			DELETE FROM project_reserve
+			WHERE rno=#{rno}
+			</delete>
+	    */
+	   public static void reserveCancel(int rno) {
+		   SqlSession session=null; //Connection
+		   try
+		   {
+			   session=ssf.openSession(true);
+			   session.delete("reserveCancel",rno);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+	   }
+	   
+	   /*
+	    * 	<select id="mypageReserveInfoData" resultMap="reserveMap" parameterType="int">
+				SELECT rno,day,pr.time,inwon,pf.name,pf.poster,pf.address,phone,theme,score,content,
+				       TO_CHAR(regdate,'YYYY-MM-DD HH:24:MI:SS') as dbday
+				FROM project_reserve pr, project_food_house pf
+				WHERE pr.fno=pf.fno AND rno=#{rno} 
+			</select>
+	    */
+	   public static ReserveVO mypageReserveInfoData(int rno) {
+		   ReserveVO vo=new ReserveVO();
+		   SqlSession session=null; //Connection
+		   try
+		   {
+			   session=ssf.openSession();
+			   vo=session.selectOne("mypageReserveInfoData",rno);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return vo;
+	   }
 }

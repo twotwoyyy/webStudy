@@ -205,7 +205,7 @@ function replyList(cno) {
 			            	<c:if test="${check==true }">
 			            		<span class="btn btn-xs btn-default">찜하기</span>
 			            	</c:if>
-	          			  <a href="#" class="btn btn-xs btn-info">예약하기</a>
+	          			  <a href="../reserve/reserve_main.do" class="btn btn-xs btn-info">예약하기</a>
 	          		    </c:if>
 	          			<input type="button" class="btn btn-xs btn-danger" value="목록" onclick="javascript:history.back()">
 	          		</td>

@@ -172,4 +172,24 @@ public class ReplyBoardDAO {
 	  }
 	  return vo;
   }
+  
+  // 삭제
+  public static void adminReplyDelete(int no)
+  {
+	  SqlSession session=null;
+	  try
+	  {
+		  session=ssf.openSession(true);
+		  session.delete("adminReplyDelete",no);
+	  }catch(Exception ex)
+	  {
+		  ex.printStackTrace();
+	  }
+	  finally
+	  {
+		  if(session!=null)
+			  session.close();
+	  }
+  }
+
 }

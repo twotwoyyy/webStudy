@@ -113,4 +113,65 @@ public class MemberDAO {
 		}	
 		return bCheck;
 	}
+	// 이메일로 찾기
+	public static String memberIdFindData(MemberVO vo) {
+		String result="";
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			int count=session.selectOne("memberIdFindCount",vo);
+			if(count==0) {
+				result="no";
+			}else {
+				result=session.selectOne("memberIdFindData",vo);
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}	
+		return result;
+	}
+	// 핸드폰 번호로 아이디 찾기
+	public static String phoneIdFindData(MemberVO vo) {
+		String result="";
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			int count=session.selectOne("phoneIdFindCount",vo);
+			if(count==0) {
+				result="no";
+			}else {
+				result=session.selectOne("phoneIdFindData",vo);
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}	
+		return result;
+	}
+	// 비밀번호 찾기
+	public static String memberPwdFindData(String id) {
+		String result="";
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			int count=session.selectOne("memberPwdFindCount",id);
+			if(count==0) {
+				result="no";
+			}else {
+				String pwd=session.selectOne("memberPwdFindData",id);
+				result=pwd;
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}	
+		return result;
+	}
 }

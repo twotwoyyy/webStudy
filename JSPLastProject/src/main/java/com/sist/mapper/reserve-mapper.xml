@@ -19,16 +19,41 @@
 		<result property="fvo.poster" column="poster"/>
 		<result property="fvo.address" column="address"/>
 		<result property="fvo.phone" column="phone"/>
+		<result property="fvo.theme" column="theme"/>
+		<result property="fvo.score" column="score"/>
+		<result property="fvo.content" column="content"/>
 	</resultMap>
 	<select id="reserveMyPageData" resultMap="reserveMap" parameterType="string">
-		SELECT rno,pr.fno,day,pr.time,inwon,isok,pf.name, pf.poster, pf.address, pf.phone, TO_CHAR(regdate, 'YYYY-MM-DD') AS dbday
+		SELECT rno,pr.fno,day,pr.time,inwon,isok,pf.name, pf.poster, pf.address, pf.phone, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday
 		FROM project_reserve pr, project_food_house pf
 		WHERE pr.fno=pf.fno 
 		AND id=#{id}
 		ORDER BY rno DESC
 	</select>
 	<!-- adminpage -->
+	<select id="reserveAdminPageData" resultMap="reserveMap">
+		 SELECT rno,pr.fno,id,day,pr.time,inwon,isok,pf.name,pf.poster,pf.address,pf.phone, TO_CHAR(regdate,'YYYY-MM-DD') as dbday
+		 FROM project_reserve pr,project_food_house pf
+		 WHERE pr.fno=pf.fno
+		 ORDER BY rno DESC
+	</select>
 	<!-- admin = 승인 -->
+	<update id="reserveOK" parameterType="int">
+		UPDATE project_reserve SET 
+		isok='y'
+		WHERE rno=#{rno}
+	</update>
 	<!-- mypage = 확인 -->
+	<select id="mypageReserveInfoData" resultMap="reserveMap" parameterType="int">
+		SELECT rno,day,pr.time,inwon,pf.name,pf.poster,pf.address,phone,theme,score,content,
+		       TO_CHAR(regdate,'YYYY-MM-DD  HH24:MI:SS') as dbday
+		FROM project_reserve pr, project_food_house pf
+		WHERE pr.fno=pf.fno AND rno=#{rno} 
+	</select>
 	<!-- mypage = 취소 -->
+	<delete id="reserveCancel" parameterType="int">
+		DELETE FROM project_reserve
+		WHERE rno=#{rno}
+	</delete>
+	
 </mapper>

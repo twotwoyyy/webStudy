@@ -42,5 +42,10 @@
     WHERE no=#{no}
   </update>
   <!-- 등록 / 답변 => 삭제 -->
+  <!-- 삭제 -->
+  <delete id="adminReplyDelete" parameterType="int">
+  	DELETE FROM project_replyboard
+  	WHERE no=#{no}
+  </delete>
   <!-- 수정 -->
 </mapper>

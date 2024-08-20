@@ -31,10 +31,10 @@
 	    <ul class="list-group">
 	      <li class="list-group-item"><a href="#">게시판관리</a></li>
 	      <li class="list-group-item"><a href="#">댓글관리</a></li>
-	      <li class="list-group-item"><a href="#">찜관리</a></li>
-	      <li class="list-group-item"><a href="#">좋아요관리</a></li>
+	      <li class="list-group-item"><a href="../mypage/mypage_jjim.do">찜관리</a></li>
+	      <li class="list-group-item"><a href="../mypage/mypage_jjim.do">좋아요관리</a></li>
 	      <li class="list-group-item"><a href="#">장바구니관리</a></li>
-	      <li class="list-group-item"><a href="../reserve/reserve_main.do">예약관리</a></li>
+	      <li class="list-group-item"><a href="../mypage/mypage_reserve.do">예약관리</a></li>
 	    </ul>
 	   </div>
    </div>

@@ -189,4 +189,13 @@ public class AdminModel {
 		   return "redirect:../adminpage/reply_list.do";
 	   }
 	   
+	   // 관리자 답변 삭제
+	   @RequestMapping("daminpage/reply_delete.do")
+	   public String reply_delete(HttpServletRequest request, HttpServletResponse response) {
+		   String no=request.getParameter("no");
+		   // DB 연동
+		   ReplyBoardDAO.adminReplyDelete(Integer.parseInt(no));
+		   return "redirect:../adminpage/reply_list.do";
+	   }
+	   
 }

@@ -34,4 +34,31 @@
  		addr1=#{addr1}, addr2=#{addr2}, phone=#{phone}, email=#{email}, content=#{content}
  		WHERE id=#{id}
  	</update>
+ 	<!-- 아이디 찾기 -->
+ 	<select id="memberIdFindCount" resultType="int" parameterType="MemberVO">
+ 		SELECT COUNT(*) FROM project_member
+ 		WHERE name=#{name} AND email=#{email}
+ 	</select>
+ 	<select id="memberIdFindData" resultType="string" parameterType="MemberVO">
+ 		SELECT RPAD(SUBSTR(id,1,2),LENGTH(id),'*') FROM project_member
+ 		WHERE name=#{name} AND email=#{email}
+ 	</select>
+ 	<select id="phoneIdFindCount" resultType="int" parameterType="MemberVO">
+ 		SELECT COUNT(*) FROM project_member
+ 		WHERE name=#{name} AND phone=#{phone}
+ 	</select>
+ 	<select id="phoneIdFindData" resultType="string" parameterType="MemberVO">
+ 		SELECT RPAD(SUBSTR(id,1,2),LENGTH(id),'*') FROM project_member
+ 		WHERE name=#{name} AND phone=#{phone}
+ 	</select>
+ 	
+ 	<!-- 비밀번호 찾기 -->
+ 	<select id="memberPwdFindCount" resultType="int" parameterType="string">
+ 		SELECT COUNT(*) FROM project_member
+ 		WHERE id=#{id}
+ 	</select>
+ 	<select id="memberPwdFindData" resultType="string" parameterType="string">
+ 		SELECT pwd FROM project_member
+ 		WHERE id=#{id}
+ 	</select>
  </mapper>

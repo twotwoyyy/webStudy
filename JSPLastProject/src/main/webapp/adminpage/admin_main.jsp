@@ -21,7 +21,7 @@
 	      <li class="list-group-item"><a href="../adminpage/member_list.do">회원관리</a></li>
 	      <li class="list-group-item"><a href="../adminpage/notice_list.do">공지사항관리</a></li>
 	      <li class="list-group-item"><a href="#">구매관리</a></li>
-	      <li class="list-group-item"><a href="#">예약관리</a></li>
+	      <li class="list-group-item"><a href="../adminpage/admin_reserve.do">예약관리</a></li>
 	      <li class="list-group-item"><a href="../adminpage/reply_list.do">묻고답하기관리</a></li>
 	    </ul>
 	   </div>

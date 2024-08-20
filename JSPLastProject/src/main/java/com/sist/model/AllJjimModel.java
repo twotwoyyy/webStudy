@@ -34,4 +34,29 @@ public class AllJjimModel {
 			out.write(result);
 		}catch(Exception ex) {}	
 	}
+	
+	@RequestMapping("mypage/mypage_jjim.do")
+	public String mypage_jjim(HttpServletRequest request, HttpServletResponse response) {
+		
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		
+		List<AllJjimVO> list=AllJjimDAO.JjimMyPageListData(id);
+		
+		request.setAttribute("jjimCount", list.size());
+		request.setAttribute("title", "찜관리");
+		request.setAttribute("allList", list);
+		request.setAttribute("mypage_jsp", "../mypage/mypage_jjim.jsp");
+		request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
+		return "../main/main.jsp";
+	}
+	@RequestMapping("mypage/mypage_jjim_cancel.do")
+	public String mypage_jjim_cancel(HttpServletRequest request, HttpServletResponse response) {
+		String jno=request.getParameter("jno");
+		// 데이터베이스 연동 
+		AllJjimDAO.JjimCancel(Integer.parseInt(jno));
+		return "redirect:../mypage/mypage_jjim.do";
+	}
+	
+	
 }

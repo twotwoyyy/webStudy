@@ -1,9 +1,12 @@
 package com.sist.model;
 import java.util.*;
+import java.io.PrintWriter;
 import java.text.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.json.simple.JSONObject;
 
 import com.sist.controller.RequestMapping;
 import com.sist.dao.FoodDAO;
@@ -169,6 +172,69 @@ public class ReserveModel {
 		FoodDAO.reserveInsert(vo);
 		//request.setAttribute("main_jsp","../mypage/mypage_main.jsp");
 		return "redirect:../mypage/mypage_reserve.do";
+	}
+	
+	@RequestMapping("adminpage/admin_reserve.do")
+	public String admin_reserve(HttpServletRequest request, HttpServletResponse response) {
+		List<ReserveVO> recvList=FoodDAO.reserveAdminPageData();
+		request.setAttribute("recvList", recvList);
+		request.setAttribute("admin_jsp", "../adminpage/admin_reserve.jsp");
+		request.setAttribute("main_jsp", "../adminpage/admin_main.jsp");
+		return "../main/main.jsp";
+	}
+	
+	@RequestMapping("adminpage/admin_reserve_ok.do")
+	public String admin_reserve_ok(HttpServletRequest request, HttpServletResponse response) {
+		
+		String rno=request.getParameter("rno");
+		// 데이터 베이스 연동 => 모든 데이터가 오라클에 존재 
+		FoodDAO.reserveOK(Integer.parseInt(rno));
+		return "redirect:../adminpage/admin_reserve.do";
+	}
+	
+	@RequestMapping("mypage/mypage_reserve_cancel.do")
+	public String mupage_reserve_cancel(HttpServletRequest request, HttpServletResponse response) {
+		
+		String rno=request.getParameter("rno");
+		// 데이터베이스 연동 => 삭제 
+		FoodDAO.reserveCancel(Integer.parseInt(rno));
+		return "redirect:../mypage/mypage_reserve.do";
+	}
+	
+	@RequestMapping("mypage/mypage_reserve_info.do")
+	public void mupage_reserve_info(HttpServletRequest request, HttpServletResponse response) {
+		
+		String rno=request.getParameter("rno");
+		// 데이터베이스 연동 => 삭제 
+		/*
+		 * rno,day,pr.time,inwon,pf.name,pf.poster,pf.address,phone,theme,score,content,
+				       TO_CHAR(regdate,'YYYY-MM-DD HH:24:MI:SS') as dbday
+		 */
+		ReserveVO vo=FoodDAO.mypageReserveInfoData(Integer.parseInt(rno));
+		// {rno:1..} => JSON:JavaScript Object Notation
+		// 자바 = 자바스크립트 호환 => RestFul
+		JSONObject obj=new JSONObject();
+		obj.put("rno", vo.getRno());
+		obj.put("day", vo.getDay());
+		obj.put("time", vo.getTime());
+		obj.put("inwon", vo.getInwon());
+		obj.put("name", vo.getFvo().getName());
+		obj.put("poster", "http://www.menupan.com"+vo.getFvo().getPoster());
+		obj.put("theme", vo.getFvo().getTheme());
+		obj.put("phone", vo.getFvo().getPhone());
+		obj.put("address", vo.getFvo().getAddress());
+		obj.put("score", vo.getFvo().getScore());
+		obj.put("content", vo.getFvo().getContent());
+		obj.put("regdate", vo.getDbday());
+		
+		
+		// ajax로 값을 전송
+		try {
+			response.setContentType("text/plain;charset=UTF-8");
+			// => text/html, text/xml, text/plain(JSON)
+			PrintWriter out=response.getWriter();
+			out.write(obj.toString());
+		}catch(Exception ex) {}
 	}
 	
 }
