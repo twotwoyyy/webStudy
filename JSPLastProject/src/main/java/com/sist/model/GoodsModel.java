@@ -57,9 +57,10 @@ public class GoodsModel {
 		map.put("table_name", tables[Integer.parseInt(cno)]);
 		GoodsVO vo=GoodsDAO.goodsDetailData(map);
 		String price=vo.getGoods_price();
-		price=price.replaceAll("[^0-9]", "");
+		price=price.replaceAll("[^0-9]", ""); // 구매창
 		vo.setPrice(Integer.parseInt(price));
 		request.setAttribute("vo", vo);
+		request.setAttribute("type", cno);
 		request.setAttribute("main_jsp", "../goods/detail.jsp");
 		CommonsModel.footerPrint(request);
 		return "../main/main.jsp";

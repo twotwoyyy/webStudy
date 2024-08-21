@@ -20,6 +20,10 @@
 		<typeAlias type="com.sist.vo.NoticeVO" alias="NoticeVO"/>
 		<typeAlias type="com.sist.vo.ReplyBoardVO" alias="ReplyBoardVO"/>
 		<typeAlias type="com.sist.vo.ReserveVO" alias="ReserveVO"/>
+		<typeAlias type="com.sist.vo.RecipeVO" alias="RecipeVO"/>
+		<typeAlias type="com.sist.vo.RecipeDetailVO" alias="RecipeDetailVO"/>
+		<typeAlias type="com.sist.vo.ChefVO" alias="ChefVO"/>
+		<typeAlias type="com.sist.vo.CartVO" alias="CartVO"/>
 	</typeAliases>
 	<!-- connection 관련 : getConnection/disConnection -->
 	<environments default="development">
@@ -49,5 +53,7 @@
 		<mapper resource="com/sist/mapper/admin-mapper.xml"/>
 		<mapper resource="com/sist/mapper/replyboard-mapper.xml"/>
 		<mapper resource="com/sist/mapper/reserve-mapper.xml"/>
+		<mapper resource="com/sist/mapper/recipe-mapper.xml"/>
+		<mapper resource="com/sist/mapper/cart-mapper.xml"/>
 	</mappers>
 </configuration>
