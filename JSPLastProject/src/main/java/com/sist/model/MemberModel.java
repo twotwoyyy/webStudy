@@ -25,6 +25,10 @@ public class MemberModel {
 			session.setAttribute("id", vo.getId());
 			session.setAttribute("name", vo.getName());
 			session.setAttribute("admin", vo.getAdmin());
+			session.setAttribute("phone", vo.getPhone());
+			session.setAttribute("address", vo.getAddr1());
+			session.setAttribute("email", vo.getEmail());
+			session.setAttribute("post", vo.getPost());
 		}
 		// ajax로 데이터 전송
 		try {
@@ -169,5 +173,36 @@ public class MemberModel {
 			PrintWriter out=response.getWriter();
 			out.write(result);
 		}catch(Exception ex) {}
+	}
+	
+	@RequestMapping("member/pwd_change.do")
+	public String member_pwd_change(HttpServletRequest request, HttpServletResponse response) {
+		
+		request.setAttribute("title", "비밀번호 변경");
+		request.setAttribute("mypage_jsp", "../member/pwdChange.jsp");
+		request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
+		return "../main/main.jsp";
+	}
+	
+	@RequestMapping("member/pwd_change_ok.do")
+	public String member_pwd_change_ok(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		String opwd=request.getParameter("old_pwd");
+		String npwd=request.getParameter("new_pwd");
+		// 데이터베이스 연동
+		Map map=new HashMap();
+		map.put("id", id);
+		map.put("pwd", opwd);
+		int count=MemberDAO.pwdCheckData(map);
+		if(count!=0) {
+			map=new HashMap();
+			map.put("id", id);
+			map.put("pwd", npwd);
+			MemberDAO.pwdChange(map);
+			session.invalidate();
+		}
+		request.setAttribute("count", count);
+		return "../member/pwdChange_ok.jsp";
 	}
 }

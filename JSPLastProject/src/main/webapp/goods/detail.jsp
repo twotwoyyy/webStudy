@@ -79,8 +79,29 @@
 		color:white;
 	}
 </style>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
+let sel=0;
+var IMP = window.IMP;
+IMP.init("imp13371355");
+
+function requestPay(json,name,price) {
+	IMP.request_pay({
+		pg: "html5_inicis",
+		pay_method: "card",
+		merchant_uid: "ORD20180131-0000011",   // 주문번호
+		name: name,
+		amount: price,           // 숫자 타입
+		buyer_email: json.email,
+		buyer_name: json.name,
+		buyer_tel: json.phone,
+		buyer_addr: json.address,
+		buyer_postcode: json.post
+	}, function (rsp) { 
+		location.href='http://localhost/JSPLastProject/mypage/mypage_buy.do'
+	});
+}
 $(function(){
 	$('#sel').change(function(){
 		let account=$('#sel').val()
@@ -92,6 +113,30 @@ $(function(){
 		let total=Number(price)*Number(account)
 		$('#total').text(total.toLocaleString()+"원")
 		$('#account').val(account)
+		sel=1;
+	})
+	$('#buy').click(function(){
+		if(sel===0){
+			alert("수량을 선택하세요")
+			return
+		}
+		
+		let gno=$('#gno').val()
+		let price=$('#price2').val()
+		let account=$('#account').val()
+		let name=$('#title').text()
+		$.ajax({
+			type:'post',
+			url:'../goods/buy_insert.do',
+			data:{"gno":gno,"price":price,"account":account},
+			success:function(result){
+				let json=JSON.parse(result)
+				requestPay(json,name,price)
+			},
+			error:function(request,status,error){
+				console.log(error)
+			}
+		})
 	})
 })
 </script>
@@ -166,11 +211,10 @@ $(function(){
 	   </tr>
 	   <tr>
 		   <td width="60%" class="inline">
-		   	<c:if test="${sessionScope.id!=null }">
+		   	<c:if test="${sessionScope.id!=null and type==1}">
 		   	<form method="post" action="../goods/cart_insert.do">
-			   <input type="hidden" name="gno" value="${vo.no }">
-			   <input type="hidden" name="type" value="${type}">
-			   <input type="hidden" name="price" value="${vo.price }">
+			   <input type="hidden" name="gno" value="${vo.no }" id="gno">
+			   <input type="hidden" name="price" value="${vo.price }" id="price2">
 			   <input type="hidden" name="account" value="" id="account">
 			   <input type="submit" value="장바구니" id="cart">
 			</form>

@@ -61,4 +61,14 @@
  		SELECT pwd FROM project_member
  		WHERE id=#{id}
  	</select>
+ 	<!-- 비밀번호 변경 -->
+ 	<select id="pwdCheckData" resultType="int" parameterType="java.util.Map">
+ 		SELECT COUNT(*) FROM project_member
+ 		WHERE id=#{id} AND pwd=#{pwd}
+ 	</select>
+ 	<update id="pwdChange" parameterType="java.util.Map">
+ 		UPDATE project_member SET 
+ 		pwd=#{pwd}
+ 		WHERE id=#{id}
+ 	</update>
  </mapper>

@@ -1,3 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sist.mapper.cart-mapper"></mapper>
+<mapper namespace="com.sist.mapper.cart-mapper">
+	<!-- 장바구니 담기 -->
+	<insert id="cartInsert" parameterType="CartVO">
+		INSERT INTO project_cart VALUES(
+			pc_cno_seq.nextval,#{gno},#{id},#{account},#{price},'n',SYSDATE
+		)
+	</insert>
+	<!-- 장바구니 목록 (마이페이지에서 출력) -->
+	<resultMap type="com.sist.vo.CartVO" id="cartMap">
+		<result property="gvo.goods_name" column="goods_name"/>
+		<result property="gvo.goods_poster" column="goods_poster"/>
+		<result property="gvo.goods_price" column="goods_price"/>
+	</resultMap>
+	<!-- 
+		while(rs.next(){
+			CartVO vo=new CartVO();
+			vo.getGoods_name(rs.getString(1)) = 오류 발생
+			vo.getGvo().setGoods_name()
+		}
+	 -->
+	<select id="cartListData" resultMap="cartMap" parameterType="string">
+       SELECT cno,goods_name,goods_poster,goods_price,account,price
+       FROM project_cart pc, goods_all g 
+       WHERE id=#{id} AND isbuy='n'
+       AND pc.gno=g.no
+     </select>
+     <!-- 카트 중복 구매 -->
+     <select id="cartGetGnoCount" resultType="int" parameterType="java.util.Map">
+     	SELECT COUNT(*) FROM project_cart
+     	WHERE gno=#{gno} AND id=#{id}
+     </select>
+     <select id="cartGetGno" resultType="int" parameterType="java.util.Map">
+     	SELECT cno FROM project_cart
+     	WHERE gno=#{gno} AND id=#{id}
+     </select>
+     <update id="cartGnoUpdate" parameterType="java.util.Map">
+     	UPDATE project_cart SET 
+     	account=account+#{account}
+     	WHERE cno=#{cno}
+     </update>
+	<!-- 바로 구매 -->
+	<insert id="buyInsert" parameterType="CartVO">
+		INSERT INTO project_cart VALUES(
+			pc_cno_seq.nextval,#{gno},#{id},#{account},#{price},'y',SYSDATE
+		)
+	</insert>
+     <!-- 카트에서 구매 -->
+     <update id="cartBuyUpdate" parameterType="int">
+     	UPDATE project_cart SET 
+     	isbuy='y'
+     	WHERE cno=#{cno}
+     </update>
+	<!-- 구매 목록 (마이페이지에서 출력) -->
+	<select id="buyListData" resultMap="cartMap" parameterType="string">
+       SELECT cno,goods_name,goods_poster,goods_price,account,price
+       FROM project_cart pc, goods_all g 
+       WHERE id=#{id} AND isbuy='y'
+       AND pc.gno=g.no
+     </select>
+     <select id="buyTotalPrice" resultType="int" parameterType="string">
+     	SELECT SUM(price*account) FROM project_cart
+     	WHERE id=#{id} AND isbuy='y' 
+     </select>
+     <!-- 장바구니 취소 -->
+     <delete id="cartCancel">
+     	DELETE FROM project_cart
+     	WHERE cno=#{cno}
+     </delete>
+</mapper>
